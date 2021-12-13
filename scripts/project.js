@@ -53,11 +53,6 @@ const create = () => {
     // highlightForm();
     console.log("what do you want to create")
     document.querySelector("#doingWhat").textContent = "Please enter the details of the plant you want to add to the database";
-    
-    const output = document.createElement("h2");
-    output.classList.add("output-text");
-    output.innerText = "This is some output text";
-    document.querySelector(".outputcontainer").appendChild(output);
     showFormCreate();
 }
 
@@ -151,6 +146,30 @@ while(div.firstChild){
   document.querySelector(".formContainer").appendChild(resBut);
 
   // add event listener for submit button
+
+  submit.addEventListener("click", () => {
+    const data = {
+        name: nameActual.value(),
+        foliageColour: foliageColActual.value(),
+        plantingMonth: monthActual.value(),
+        plantingPosition: positionActual.value(),
+        flowerCiolour: flowerActual.value()   
+    };
+    axios
+        .post(`${baseURL}/createPlant/${data}`)
+        .then(res => read())
+        .catch(err => console.error(err))
+        console.log(res);
+},)
+ // add event listener for reset button
+ reset.addEventListener("click", () => {
+    document.getElementById('nameActual').value = "";
+    document.getElementById('foliageColActual').value = "";
+    document.getElementById('monthActual').value = "";
+    document.getElementById('positionActual').value = "";
+    document.getElementById('flowerActual').value = "";
+ })
+
 }
 
 
@@ -164,8 +183,11 @@ const read = () => {
     // deselectForm();
     // deselectIdInput()
     document.querySelector("#doingWhat").textContent = "Reading all entries";
+    const output = document.createElement("h2");
+    output.setAttribute("class", "output-text")
+    document.querySelector(".outputcontainer").appendChild(output);
 
-    axios.get(`${baseURL}//getAll`)
+    axios.get(`${baseURL}/getAll`)
     .then(res => {
         const plants = res.data;
         for(let i = 0; i<plants.length; i++){
@@ -186,31 +208,31 @@ const read = () => {
 
             const plantFoliage = document.createElement("p");
             plantFoliage.setAttribute("class", "card-text");
-            plantFoliage.innerText = `${plants[i].foliageColour}`;
+            plantFoliage.innerText = `Foliage colour: ${plants[i].foliageColour}`;
             output.appendChild(plantFoliage);
 
             const plantMonth = document.createElement("p");
             plantMonth.setAttribute("class", "card-text");
-            plantMonth.innerText = `${plants[i].plantingMonth}`;
+            plantMonth.innerText = `Planting month: ${plants[i].plantingMonth}`;
             output.appendChild(plantMonth);
 
             const plantPosition = document.createElement("p");
             plantPosition.setAttribute("class", "card-text");
-            plantPosition.innerText = `${plants[i].plantingPosition}`;
+            plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}`;
             output.appendChild(plantPosition);
 
             const plantFlower = document.createElement("p");
             plantFlower.setAttribute("class", "card-text");
-            plantFlower.innerText = `${plants[i].flowerColour}`;
+            plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
             output.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
-                projectDel.innerText = "DELETE";
-                projectDel.classList.add("btn", "btn-danger");
-                projectDel.addEventListener("click", () => {
+            plantDel.innerText = "DELETE";
+            plantDel.classList.add("btn", "btn-danger");
+            plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURL}/deletePlant/${plants[i].id}`)
-                        .then(res => getAll())
+                        .then(res => read())
                         .catch(err => console.error(err))
                         console.log(res);
         });
@@ -513,6 +535,7 @@ const subBut = document.createElement("button");
   subBut.setAttribute("id", "submit");
   subBut.innerText = "Yes, do it!";
   document.querySelector(".formContainer").appendChild(subBut);
+
 
   const resBut = document.createElement("button");
   resBut.setAttribute("class", "formButton");
