@@ -227,7 +227,7 @@ const read = () => {
             output.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
-            plantDel.innerText = "DELETE";
+            plantDel.innerText = "delete";
             plantDel.classList.add("btn", "btn-danger");
             plantDel.addEventListener("click", () => {
                     axios
@@ -362,12 +362,79 @@ const showIdRead = () => {
     resBut.setAttribute("id", "reset");
     resBut.innerText = "Reset";
     document.querySelector(".formContainer").appendChild(resBut);
-}
 
-const update = () => {
+    // need event listeners for each button
+        subBut.addEventListener("click", () => { 
+        console.log("Do i get to here? just after button click") // nope
+        const id = document.querySelector("submit").value();
+        axios
+            .get(`${baseURL}/getById/${id}`)
+            .then( res => {
+                console.log("Do i get to here? in axios.get") // also nope
+                const plant = res.data;
+    const plantCol = document.createElement("div");
+            plantCol.setAttribute("class", "col");
+
+            const plantCard = document.createElement("div");
+            plantCard.setAttribute("class", "card");
+
+            const plantBody = document.createElement("div");
+            plantBody.setAttribute("class", "card-body");
+
+            const plantTitle = document.createElement("h2");
+            plantTitle.setAttribute("class", "card-title");
+            plantTitle.innerText = `${plant.name}`;
+            output.appendChild(plantTitle);
+
+            const plantFoliage = document.createElement("p");
+            plantFoliage.setAttribute("class", "card-text");
+            plantFoliage.innerText = `Foliage colour: ${plant.foliageColour}`;
+            output.appendChild(plantFoliage);
+
+            const plantMonth = document.createElement("p");
+            plantMonth.setAttribute("class", "card-text");
+            plantMonth.innerText = `Planting month: ${plant.plantingMonth}`;
+            output.appendChild(plantMonth);
+
+            const plantPosition = document.createElement("p");
+            plantPosition.setAttribute("class", "card-text");
+            plantPosition.innerText = `Planting position: ${plant.plantingPosition}`;
+            output.appendChild(plantPosition);
+
+            const plantFlower = document.createElement("p");
+            plantFlower.setAttribute("class", "card-text");
+            plantFlower.innerText = `Flower colour: ${plant.flowerColour}`;
+            output.appendChild(plantFlower);
+
+            const plantDel = document.createElement("button");
+            plantDel.innerText = "delete";
+            plantDel.classList.add("btn", "btn-danger");
+            plantDel.addEventListener("click", () => {
+                    axios
+                        .delete(`${baseURL}/deletePlant/${plant.id}`)
+                        .then(res => read())
+                        .catch(err => console.error(err))
+                        console.log(res);
+        });
+        console.log("Do i get to here?")
+        plantBody.appendChild(plantDel);
+        plantCard.appendChild(plantBody);
+        plantCol.appendChild(plantDel);
+        output.appendChild(plantCol);
+        
+     // add event listener for reset button
+     resBut.addEventListener("click", () => {
+        document.getElementById("idActual").value = "";
+     })
+})
+
+    .catch(err => console.error(err))
+            
+})
+
+}
+    const update = () => {
     console.log("in the update function");
-    // highlightForm();
-    // highlightIdInput();
     document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to update and the new details";
     showFormUpdate();
 }
@@ -523,8 +590,6 @@ const deleteAll = () => {
         div.removeChild(div.firstChild);
     }
     console.log("in the deleteAll function");
-    // deselectForm();
-    // deselectIdInput();
     document.querySelector("#doingWhat").textContent = "Deleting all entries from the database!!";
     areYouSure();
 }
@@ -577,6 +642,8 @@ buttons.forEach(btn => {
             readByMonth();
         }else if (event.target.innerText === "update by name") {
             updateByName();
+        } else {
+
         }
     });
 });
