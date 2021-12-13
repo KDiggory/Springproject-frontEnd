@@ -21,6 +21,39 @@ function operations(event) {
     }
 }
 
+/// Need to do:
+// complete functions
+// make functions for submit and reset
+// make it so form clears after entry
+
+
+function highlightForm() {
+    for (let docs of document.querySelectorAll("#inputBox")) {
+        const highlightGreen = docs;
+        highlightGreen.style.background = "rgba(228,170,158,255)";
+    }
+    const leaveWhite = document.querySelector("#idInput");
+    leaveWhite.style.background = "transparent";
+}
+
+function highlightIdInput() {
+    const selectIdInput = document.querySelector("#idInput");
+    selectIdInput.style.background = "rgba(228,170,158,255)";
+
+}
+
+function deselectIdInput() {
+    const selectIdInput = document.querySelector("#idInput");
+    selectIdInput.style.background = "transparent";
+
+}
+function deselectForm() {
+    for (let docs of document.querySelectorAll("#inputBox")) {
+        const highlightGreen = docs;
+        highlightGreen.style.background = "transparent";
+    }
+}
+
 buttons.forEach(btn => {
     btn.addEventListener('click', event => {
         if (event.target.innerText === "create") {
