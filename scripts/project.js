@@ -184,6 +184,19 @@ const read = () => {
     // deselectIdInput()
     document.querySelector("#doingWhat").textContent = "Reading all entries";
 }
+const readById = () => {
+    console.log("in the readById function");
+    // deselectForm();
+    // highlightIdInput();
+    document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to find";
+    showIdRead();
+}
+
+const readByName = () => {
+    console.log("in the read by name function");
+    document.querySelector("#doingWhat").textContent = "Please enter the name of the plants you would like to find";
+    showName();
+}
 
 buttons.forEach(btn => {
     btn.addEventListener('click', event => {
