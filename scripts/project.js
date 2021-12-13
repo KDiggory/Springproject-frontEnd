@@ -24,23 +24,6 @@ promisesPromises.then(onSuccess).catch(onFailure);
 const buttons = document.querySelectorAll(".button");
 // const output = document.querySelector("div#history");
 
-
-function operations(event) {
-    if (event.target.innerText ==="clear") {
-        counter.value = null;
-    } else if ( event.target.innerText === "="){
-        const current = counter.value;
-        counter.value = null;
-    evaluate(op, current, saved);
-    }else {
-    const current = counter.value;
-    counter.value = null;
-    op = event.target.innerText ;
-    saved = current;
-    addHistory(`${current} ${op} `)
-    }
-}
-
 /// Need to do:
 // complete functions
 // make functions for submit and reset
@@ -165,7 +148,11 @@ while(div.firstChild){
   resBut.setAttribute("id", "reset");
   resBut.innerText = "Reset";
   document.querySelector(".formContainer").appendChild(resBut);
+
+  // add event listener for submit button
 }
+
+
 
 const read = () => {
     const div =   document.querySelector(".formContainer");
@@ -180,9 +167,58 @@ const read = () => {
     axios.get(`${baseURL}//getAll`)
     .then(res => {
         const plants = res.data;
-        for(let i = 0; i<plants/length; i++){
-            console.log(plants[i]);
-        }
+        for(let i = 0; i<plants.length; i++){
+            console.log(plants[i]); // should log projects to console
+            const plantCol = document.createElement("div");
+            plantCol.setAttribute("class", "col");
+
+            const plantCard = document.createElement("div");
+            plantCard.setAttribute("class", "card");
+
+            const plantBody = document.createElement("div");
+            plantBody.setAttribute("class", "card-body");
+
+            const plantTitle = document.createElement("h2");
+            plantTitle.setAttribute("class", "card-title");
+            plantTitle.innerText = `${plants[i].name}`;
+            output.appendChild(plantTitle);
+
+            const plantFoliage = document.createElement("p");
+            plantFoliage.setAttribute("class", "card-text");
+            plantFoliage.innerText = `${plants[i].foliageColour}`;
+            output.appendChild(plantFoliage);
+
+            const plantMonth = document.createElement("p");
+            plantMonth.setAttribute("class", "card-text");
+            plantMonth.innerText = `${plants[i].plantingMonth}`;
+            output.appendChild(plantMonth);
+
+            const plantPosition = document.createElement("p");
+            plantPosition.setAttribute("class", "card-text");
+            plantPosition.innerText = `${plants[i].plantingPosition}`;
+            output.appendChild(plantPosition);
+
+            const plantFlower = document.createElement("p");
+            plantFlower.setAttribute("class", "card-text");
+            plantFlower.innerText = `${plants[i].flowerColour}`;
+            output.appendChild(plantFlower);
+
+            const plantDel = document.createElement("button");
+                projectDel.innerText = "DELETE";
+                projectDel.classList.add("btn", "btn-danger");
+                projectDel.addEventListener("click", () => {
+                    axios
+                        .delete(`${baseURL}/deletePlant/${plants[i].id}`)
+                        .then(res => getAll())
+                        .catch(err => console.error(err))
+                        console.log(res);
+        });
+        plantBody.appendChild(plantDel);
+        plantCard.appendChild(plantBody);
+        plantCol.appendChild(plantDel);
+        output.appendChild(plantCol);
+    }
+
     })
 
 }
