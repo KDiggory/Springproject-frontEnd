@@ -1,5 +1,25 @@
 "use strict";
 
+const promisesPromises = new Promise((resolve, reject) => {
+    const rand = Math.random();
+
+    console.log("Start of promise");
+    setTimeout(() => {
+        if (rand > 0.5) {
+            resolve("Yay!");    
+        } else {
+            reject("Boo!");
+        }
+    }, 5_000);  
+
+    console.log("End of promise");
+});
+
+const onSuccess = res => console.log("Success:", res);
+const onFailure = err => console.error("Failure:", err);
+
+promisesPromises.then(onSuccess).catch(onFailure);
+
 // event listeners for all buttons
 const buttons = document.querySelectorAll(".button");
 // const output = document.querySelector("div#history");
