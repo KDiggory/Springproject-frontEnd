@@ -174,6 +174,16 @@ while(div.firstChild){
   document.querySelector(".formContainer").appendChild(resBut);
 }
 
+const read = () => {
+    const div =   document.querySelector(".formContainer");
+    while(div.firstChild){
+        div.removeChild(div.firstChild);
+    }
+    console.log("in the read function");
+    // deselectForm();
+    // deselectIdInput()
+    document.querySelector("#doingWhat").textContent = "Reading all entries";
+}
 
 buttons.forEach(btn => {
     btn.addEventListener('click', event => {
