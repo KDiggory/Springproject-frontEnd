@@ -76,7 +76,7 @@ while(div.firstChild){
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("class", "input");
-  nameInput.setAttribute("id", "inputBoxActual");
+  nameInput.setAttribute("id", "nameActual");
   nameInput.setAttribute("name", "plantName");
   document.querySelector(".formContainer").appendChild(nameInput);
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -131,7 +131,7 @@ while(div.firstChild){
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
   const flowerInput = document.createElement("input");
   flowerInput.setAttribute("type", "text");
-  flowerInputLabel.setAttribute("class", "input");
+  flowerInput.setAttribute("class", "input");
   flowerInput.setAttribute("id", "flowerActual");
   flowerInput.setAttribute("name", "flowerCol");
   document.querySelector(".formContainer").appendChild(flowerInput);
@@ -141,6 +141,7 @@ while(div.firstChild){
   subBut.setAttribute("class", "formButton");
   subBut.setAttribute("id", "submit");
   subBut.innerText = "Submit";
+  document.querySelector(".formContainer").appendChild(document.createElement("br"));
   document.querySelector(".formContainer").appendChild(subBut);
 
   const resBut = document.createElement("button");
@@ -265,6 +266,7 @@ const showMonth = () => {
   subBut.setAttribute("class", "formButton");
   subBut.setAttribute("id", "submit");
   subBut.innerText = "Submit";
+  document.querySelector(".formContainer").appendChild(document.createElement("br"));
   document.querySelector(".formContainer").appendChild(subBut);
 
   const resBut = document.createElement("button");
@@ -297,6 +299,7 @@ const showName = () => {
     subBut.setAttribute("class", "formButton");
     subBut.setAttribute("id", "submit");
     subBut.innerText = "Submit";
+    document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
@@ -329,6 +332,7 @@ const showIdRead = () => {
     subBut.setAttribute("class", "formButton");
     subBut.setAttribute("id", "submit");
     subBut.innerText = "Submit";
+    document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
@@ -441,6 +445,7 @@ while(div.firstChild){
     subBut.setAttribute("class", "formButton");
     subBut.setAttribute("id", "submit");
     subBut.innerText = "Submit";
+    document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
@@ -480,13 +485,14 @@ const showIdDel = () => {
     const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
     subBut.setAttribute("id", "submit");
-    subBut.innerText = "Submit";
+    subBut.innerText = "Yes, delete that plant";
+    document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
     resBut.setAttribute("class", "formButton");
     resBut.setAttribute("id", "reset");
-    resBut.innerText = "Reset";
+    resBut.innerText = "Nope, changed my mind. Reset!";
     document.querySelector(".formContainer").appendChild(resBut);
 }
 const deleteAll = () => {
@@ -521,10 +527,8 @@ const clear = () => {
         div.removeChild(div.firstChild);
     }
     console.log("in the clear function");
-    // deselectForm();
-    // deselectIdInput();
     document.querySelector("#doingWhat").textContent = "Clearing the history";
-    //  document.querySelector("output-text").innerText = "";
+    document.querySelector(".outputcontainer").innerText = "";
 }
 
 
@@ -542,8 +546,7 @@ buttons.forEach(btn => {
             deleteById();
         } else if (event.target.innerText === "reset this page") {
             clear();
-        }
-        else if (event.target.innerText === "delete all entries") {
+        } else if (event.target.innerText === "delete all entries") {
             deleteAll();
         }else if (event.target.innerText === "read by name") {
             readByName();

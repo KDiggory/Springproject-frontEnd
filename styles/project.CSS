@@ -75,11 +75,16 @@
 }
 
   input {
-    font-size:14px;
+    font-size:16px;
     color:black;
-    font-family: Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    /* this does nothing to the text, only size seems to work? */
+    font-weight: lighter; 
     width:65%;
+    padding: 15px 10px;
+    line-height: 15px;
 }
+
 
 #theform {
     color: black;
@@ -105,11 +110,11 @@
 
 
 body {
-	background: linear-gradient(270deg, #828f7d, #b3b47e, #a1999a, #5c9c74);
+	background: linear-gradient(270deg, #828f7d, #b3b47e, #5c9c74);
 	background-size: 600% 600%;
-	-webkit-animation: Gradient 60s ease infinite;
-	-moz-animation: Gradient 60s ease infinite;
-	animation: Gradient 60s ease infinite;
+	-webkit-animation: Gradient 30s ease infinite;
+	-moz-animation: Gradient 30s ease infinite;
+	animation: Gradient 30s ease infinite;
 }
 @-webkit-keyframes AnimationName {
     0%{background-position:50% 0%}
