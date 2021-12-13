@@ -175,13 +175,16 @@ while(div.firstChild){
 
 
 const read = () => {
+    console.log("does it get to here? clearing!")
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
     }
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     console.log("in the read function");
-    // deselectForm();
-    // deselectIdInput()
     document.querySelector("#doingWhat").textContent = "Reading all entries";
     const output = document.createElement("h2");
     output.setAttribute("class", "output-text")
@@ -235,6 +238,8 @@ const read = () => {
                         .then(res => read())
                         .catch(err => console.error(err))
                         console.log(res);
+                        document.querySelector(".outputcontainer").innerText = "";
+                        read();
         });
         plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);
@@ -412,9 +417,11 @@ const showIdRead = () => {
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURL}/deletePlant/${plant.id}`)
-                        .then(res => read())
+                        .then(res => read())                   
                         .catch(err => console.error(err))
                         console.log(res);
+                        
+
         });
         console.log("Do i get to here?")
         plantBody.appendChild(plantDel);
