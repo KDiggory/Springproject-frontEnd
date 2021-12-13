@@ -49,8 +49,11 @@ function operations(event) {
 const baseURL = "http://localhost:8080";
 
 const create = () => {
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     console.log("in the create function");
-    // highlightForm();
     console.log("what do you want to create")
     document.querySelector("#doingWhat").textContent = "Please enter the details of the plant you want to add to the database";
     showFormCreate();
@@ -251,20 +254,30 @@ const read = () => {
 
 }
 const readById = () => {
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     console.log("in the readById function");
-    // deselectForm();
-    // highlightIdInput();
     document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to find";
     showIdRead();
 }
 
 const readByName = () => {
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     console.log("in the read by name function");
     document.querySelector("#doingWhat").textContent = "Please enter the name of the plants you would like to find";
     showName();
 }
 
 const readByMonth = () => {
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     console.log("in the read by planting month function");
     document.querySelector("#doingWhat").textContent = "Please enter the planting month of the plants you would like to find";
     showMonth();
@@ -441,6 +454,10 @@ const showIdRead = () => {
 
 }
     const update = () => {
+        const outputDiv =   document.querySelector(".outputcontainer");
+        while(outputDiv.firstChild){
+            outputDiv.removeChild(outputDiv.firstChild);
+    }
     console.log("in the update function");
     document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to update and the new details";
     showFormUpdate();
@@ -552,9 +569,11 @@ while(div.firstChild){
   }
 
 const deleteById = () => {
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     console.log("in the deleteById function");
-    // deselectForm();
-    // highlightIdInput();
     document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to delete from the database";
     showIdDel();
 }
@@ -592,6 +611,10 @@ const showIdDel = () => {
     document.querySelector(".formContainer").appendChild(resBut);
 }
 const deleteAll = () => {
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
