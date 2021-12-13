@@ -47,32 +47,7 @@ function operations(event) {
 // make it so form clears after entry
 
 
-// function highlightForm() {
-//     for (let docs of document.querySelectorAll("#inputBox")) {
-//         const highlightGreen = docs;
-//         highlightGreen.style.background = "rgba(228,170,158,255)";
-//     }
-//     const leaveWhite = document.querySelector("#idInput");
-//     leaveWhite.style.background = "transparent";
-// }
 
-// function highlightIdInput() {
-//     const selectIdInput = document.querySelector("#idInput");
-//     selectIdInput.style.background = "rgba(228,170,158,255)";
-
-// }
-
-// function deselectIdInput() {
-//     const selectIdInput = document.querySelector("#idInput");
-//     selectIdInput.style.background = "transparent";
-
-// }
-// function deselectForm() {
-//     for (let docs of document.querySelectorAll("#inputBox")) {
-//         const highlightGreen = docs;
-//         highlightGreen.style.background = "transparent";
-//     }
-// }
 
 function operations(event) {
     if (event.target.innerText ==="clear") {
@@ -536,3 +511,35 @@ buttons.forEach(btn => {
         }
     });
 });
+
+
+       //         THINGS THAT DIDNT MAKE THE FINAL             //
+
+// This was to highlight which part of the form needed to be filled in - but I changed my mind so when you click on each option the things you need are shown instead
+
+// function highlightForm() {
+//     for (let docs of document.querySelectorAll("#inputBox")) {
+//         const highlightGreen = docs;
+//         highlightGreen.style.background = "rgba(228,170,158,255)";
+//     }
+//     const leaveWhite = document.querySelector("#idInput");
+//     leaveWhite.style.background = "transparent";
+// }
+
+// function highlightIdInput() {
+//     const selectIdInput = document.querySelector("#idInput");
+//     selectIdInput.style.background = "rgba(228,170,158,255)";
+
+// }
+
+// function deselectIdInput() {
+//     const selectIdInput = document.querySelector("#idInput");
+//     selectIdInput.style.background = "transparent";
+
+// }
+// function deselectForm() {
+//     for (let docs of document.querySelectorAll("#inputBox")) {
+//         const highlightGreen = docs;
+//         highlightGreen.style.background = "transparent";
+//     }
+// }
