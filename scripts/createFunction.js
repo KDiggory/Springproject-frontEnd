@@ -134,34 +134,41 @@ while(div.firstChild){
   // add event listener for submit button
 
   submit.addEventListener("click", () => {
+      const name = nameActual.value;
+      const foliageColour = foliageColActual.value;
+      const plantingMonth = monthActual.value;
+      const plantingPosition = positionActual.value;
+      const flowerColour = flowerActual.value;
     const data = {
-        name: nameActual.value(),
-        foliageColour: foliageColActual.value(),
-        plantingMonth: monthActual.value(),
-        plantingPosition: positionActual.value(),
-        flowerCiolour: flowerActual.value()   
+        name: name,
+        foliageColour: foliageColour,
+        plantingMonth:plantingMonth,
+        plantingPosition: plantingPosition,
+        flowerColour: flowerColour   
     };
+    console.log(data);
     axios
-        .post(`${baseURLCreate}/createPlant/${data}`)
-        .then(res => readCreate())
-        .catch(err => console.error(err))
-        console.log(res);
-},)
+        .post(`${baseURLCreate}/createPlant/`, data)
+        .then(
+            console.log("in the create axios function, after post"))
+        .catch(err => console.error(err))    
+        readCreate()
+},
+)
  // add event listener for reset button
  reset.addEventListener("click", () => {
-    document.getElementById('nameActual').value = "";
-    document.getElementById('foliageColActual').value = "";
-    document.getElementById('monthActual').value = "";
-    document.getElementById('positionActual').value = "";
-    document.getElementById('flowerActual').value = "";
+    showFormCreate(); // instead of actually clearing, just call the show form function again
+    // document.getElementById('nameActual').value = "";
+    // document.getElementById('foliageColActual').value = "";
+    // document.getElementById('monthActual').value = "";
+    // document.getElementById('positionActual').value = "";
+    // document.getElementById('flowerActual').value = "";
  })
-
 }
-
 
 // read is referenced by other methods so needs to be in each script
 const readCreate = () => {
-    console.log("does it get to here? clearing!")
+    console.log("does it get to here? clearing!") // it gets to here
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
@@ -221,7 +228,8 @@ const readCreate = () => {
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)
-                        .then(res => readCreate())
+                        .then(
+                            readCreate())
                         .catch(err => console.error(err))
                         console.log(res);
                         document.querySelector(".outputcontainer").innerText = "";

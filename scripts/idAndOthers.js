@@ -173,6 +173,11 @@ const read = () => {
             plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
             output.appendChild(plantFlower);
 
+            const plantId = document.createElement("p");
+            plantId.setAttribute("class", "card-text");
+            plantId.innerText = `ID: ${plants[i].id}`;
+            output.appendChild(plantId);
+
             const plantDel = document.createElement("button");
             plantDel.innerText = "delete";
             plantDel.classList.add("btn", "btn-danger");
