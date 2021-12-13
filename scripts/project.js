@@ -47,8 +47,6 @@ function operations(event) {
 // make it so form clears after entry
 
 
-
-
 function operations(event) {
     if (event.target.innerText ==="clear") {
         counter.value = null;
@@ -65,14 +63,14 @@ function operations(event) {
     }
 }
 
+const baseURL = "http://localhost:8080";
+
 const create = () => {
     console.log("in the create function");
     // highlightForm();
     console.log("what do you want to create")
     document.querySelector("#doingWhat").textContent = "Please enter the details of the plant you want to add to the database";
     
-
-
     const output = document.createElement("h2");
     output.classList.add("output-text");
     output.innerText = "This is some output text";
@@ -178,6 +176,15 @@ const read = () => {
     // deselectForm();
     // deselectIdInput()
     document.querySelector("#doingWhat").textContent = "Reading all entries";
+
+    axios.get(`${baseURL}//getAll`)
+    .then(res => {
+        const plants = res.data;
+        for(let i = 0; i<plants/length; i++){
+            console.log(plants[i]);
+        }
+    })
+
 }
 const readById = () => {
     console.log("in the readById function");
