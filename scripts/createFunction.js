@@ -133,7 +133,7 @@ while(div.firstChild){
 
   // add event listener for submit button
 
-  submit.addEventListener("click", () => {
+  submit.addEventListener("click", () => { // change this to submit the form instead
       const name = nameActual.value;
       const foliageColour = foliageColActual.value;
       const plantingMonth = monthActual.value;
@@ -153,8 +153,7 @@ while(div.firstChild){
             console.log("in the create axios function, after post"))
         .catch(err => console.error(err))    
         readCreate()
-},
-)
+},)
  // add event listener for reset button
  reset.addEventListener("click", () => {
     showFormCreate(); // instead of actually clearing, just call the show form function again
@@ -165,7 +164,6 @@ while(div.firstChild){
     // document.getElementById('flowerActual').value = "";
  })
 }
-
 // read is referenced by other methods so needs to be in each script
 const readCreate = () => {
     console.log("does it get to here? clearing!") // it gets to here
@@ -183,7 +181,8 @@ const readCreate = () => {
     output.setAttribute("class", "output-text")
     document.querySelector(".outputcontainer").appendChild(output);
 
-    axios.get(`${baseURLCreate}/getAll`)
+    axios
+    .get(`${baseURLCreate}/getAll`)
     .then(res => {
         const plants = res.data;
         for(let i = 0; i<plants.length; i++){

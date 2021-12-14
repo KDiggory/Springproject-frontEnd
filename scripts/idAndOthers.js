@@ -14,10 +14,15 @@ const readById = () => {
 }
 
 const showIdRead = () => {
+    console.log("does it get to here? clearing!")
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
     }
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     const idInputLabel = document.createElement("label");
     idInputLabel.setAttribute("for", "id");
     idInputLabel.setAttribute("class", "label");
@@ -43,18 +48,21 @@ const showIdRead = () => {
     resBut.setAttribute("class", "formButton");
     resBut.setAttribute("id", "reset");
     resBut.innerText = "Reset";
-    document.querySelector(".formContainer").appendChild(resBut);
-
+    document.querySelector(".formContainer").appendChild(resBut); // it definately gets to here
+    console.log("Do i get to here?") // yes
     // need event listeners for each button
-        subBut.addEventListener("click", () => { 
-        console.log("Do i get to here? just after button click") // nope
-        const id = document.querySelector("submit").value();
+
+    document.querySelector(".formContainer").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const form = this;
+        const id = form.idActual.value;
+        console.log(id); // yes
+        console.log("Do i get to here?") // yes
         axios
-            .get(`${baseURL}/getById/${id}`)
+            .get(`${baseURL}/getPlantById/${id}`)
             .then( res => {
-                console.log("Do i get to here? in axios.get") // also nope
-                const plant = res.data;
-    const plantCol = document.createElement("div");
+            const plant = res.data;
+            const plantCol = document.createElement("div");
             plantCol.setAttribute("class", "col");
 
             const plantCard = document.createElement("div");
@@ -66,27 +74,27 @@ const showIdRead = () => {
             const plantTitle = document.createElement("h2");
             plantTitle.setAttribute("class", "card-title");
             plantTitle.innerText = `${plant.name}`;
-            output.appendChild(plantTitle);
+            outputDiv.appendChild(plantTitle);
 
             const plantFoliage = document.createElement("p");
             plantFoliage.setAttribute("class", "card-text");
             plantFoliage.innerText = `Foliage colour: ${plant.foliageColour}`;
-            output.appendChild(plantFoliage);
+            outputDiv.appendChild(plantFoliage);
 
             const plantMonth = document.createElement("p");
             plantMonth.setAttribute("class", "card-text");
             plantMonth.innerText = `Planting month: ${plant.plantingMonth}`;
-            output.appendChild(plantMonth);
+            outputDiv.appendChild(plantMonth);
 
             const plantPosition = document.createElement("p");
             plantPosition.setAttribute("class", "card-text");
             plantPosition.innerText = `Planting position: ${plant.plantingPosition}`;
-            output.appendChild(plantPosition);
+            outputDiv.appendChild(plantPosition);
 
             const plantFlower = document.createElement("p");
             plantFlower.setAttribute("class", "card-text");
             plantFlower.innerText = `Flower colour: ${plant.flowerColour}`;
-            output.appendChild(plantFlower);
+            outputDiv.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
             plantDel.innerText = "delete";
@@ -97,23 +105,18 @@ const showIdRead = () => {
                         .then(res => read())                   
                         .catch(err => console.error(err))
                         console.log(res);
-                        
-
         });
         console.log("Do i get to here?")
         plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);
         plantCol.appendChild(plantDel);
-        output.appendChild(plantCol);
-        
-     // add event listener for reset button
+        outputDiv.appendChild(plantCol);
+
      resBut.addEventListener("click", () => {
-        document.getElementById("idActual").value = "";
+        showIdRead(); // instead of actually clearing, just call the show form function again
      })
 })
-
-    .catch(err => console.error(err))
-            
+    .catch(err => console.error(err))       
 })
 
 }
