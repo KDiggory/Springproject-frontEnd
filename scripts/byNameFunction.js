@@ -54,6 +54,10 @@ const showName = () => {
         const form = this;
         const name = form.nameActual.value;
         console.log(name);
+        const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
         axios
         .get(`${baseURL}/getPlantByName/${name}`)
                 .then( res => {
@@ -109,7 +113,7 @@ const showName = () => {
                             .catch(err => console.error(err))
                             console.log(res);
             });
-            console.log("Do i get to here?")
+        
             plantBody.appendChild(plantDel);
             plantCard.appendChild(plantBody);
             plantCol.appendChild(plantDel);

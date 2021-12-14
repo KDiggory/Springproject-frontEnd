@@ -13,7 +13,6 @@ const readByMonth = () => {
 }
 
 const showMonth = () => {
-    console.log("does it get to here? clearing!")
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
@@ -53,6 +52,10 @@ const showMonth = () => {
     event.preventDefault();
     const form = this;
     const month = form.monthActual.value;
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
     axios
     .get(`${baseURL}/getPlantByMonth/${month}`)
             .then( res => {
@@ -105,7 +108,7 @@ const showMonth = () => {
                         .catch(err => console.error(err))
                         console.log(res);
         });
-        console.log("Do i get to here?")
+    
         plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);
         plantCol.appendChild(plantDel);

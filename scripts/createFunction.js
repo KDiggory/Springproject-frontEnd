@@ -1,33 +1,11 @@
 "use strict";
 
-// const anotherPromise = new Promise((resolve, reject) => {
-//     const rand = Math.random();
 
-//     console.log("Start of promise");
-//     setTimeout(() => {
-//         if (rand > 0.5) {
-//             resolve("Yay!");    
-//         } else {
-//             reject("Boo!");
-//         }
-//     }, );  
-
-//     console.log("End of promise");
-// });
-
-// const onSuccess = res => console.log("Success:", res);
-// const onFailure = err => console.error("Failure:", err);
-
-// anotherPromise.then(onSuccess).catch(onFailure);
 
 // event listeners for all buttons
 const buttons2 = document.querySelectorAll(".button");
-// const output = document.querySelector("div#history");
 
-/// Need to do:
-// complete functions
-// make functions for submit and reset
-// make it so form clears after entry
+
 
 const baseURLCreate = "http://localhost:8080";
 
@@ -163,7 +141,7 @@ while(div.firstChild){
 }
 // read is referenced by other methods so needs to be in each script
 const readCreate = () => {
-    console.log("does it get to here? clearing!") // it gets to here
+    console.log("In read, create") // this only reads the old ones, not the new one
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
@@ -172,12 +150,6 @@ const readCreate = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
 }
-    console.log("in the read function");
-    document.querySelector("#doingWhat").textContent = "Reading all entries";
-    const output = document.createElement("h2");
-    output.setAttribute("class", "output-text")
-    document.querySelector(".outputcontainer").appendChild(output);
-
     axios
     .get(`${baseURLCreate}/getAll`)
     .then(res => {

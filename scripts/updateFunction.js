@@ -156,7 +156,6 @@ const readUpdate = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
 }
-    console.log("in the read function - after update");
     document.querySelector("#doingWhat").textContent = "Reading all entries";
     const output = document.createElement("h2");
     output.setAttribute("class", "output-text")

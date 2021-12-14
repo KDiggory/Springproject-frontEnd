@@ -66,35 +66,6 @@ const showIdDel = () => {
   })
   }
 
-const deleteAll = () => {
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-    }
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    console.log("in the deleteAll function");
-    document.querySelector("#doingWhat").textContent = "Deleting all entries from the database!!";
-    areYouSure();
-    }
-    const areYouSure = () => {
-    
-    const subBut = document.createElement("button");
-    subBut.setAttribute("class", "formButton");
-    subBut.setAttribute("id", "submit");
-    subBut.innerText = "Yes, do it!";
-    document.querySelector(".formContainer").appendChild(subBut);
-    
-    
-    const resBut = document.createElement("button");
-    resBut.setAttribute("class", "formButton");
-    resBut.setAttribute("id", "reset");
-    resBut.innerText = "No, what am I thinking!?";
-    document.querySelector(".formContainer").appendChild(resBut);
-    }
-
     const readDelete = () => {
         const div =   document.querySelector(".formContainer");
         while(div.firstChild){

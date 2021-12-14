@@ -14,7 +14,6 @@ const readById = () => {
 }
 
 const showIdRead = () => {
-    console.log("does it get to here? clearing!")
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
@@ -48,16 +47,19 @@ const showIdRead = () => {
     resBut.setAttribute("class", "formButton");
     resBut.setAttribute("id", "reset");
     resBut.innerText = "Reset";
-    document.querySelector(".formContainer").appendChild(resBut); // it definately gets to here
-    console.log("Do i get to here?") // yes
+    document.querySelector(".formContainer").appendChild(resBut); 
+    
     // need event listeners for each button
 
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
         const id = form.idActual.value;
-        console.log(id); // yes
-        console.log("Do i get to here?") // yes
+        console.log(id); 
+        const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
+}
         axios
             .get(`${baseURL}/getPlantById/${id}`)
             .then( res => {
@@ -106,7 +108,6 @@ const showIdRead = () => {
                         .catch(err => console.error(err))
                         console.log(res);
         });
-        console.log("Do i get to here?")
         plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);
         plantCol.appendChild(plantDel);
@@ -122,7 +123,6 @@ const showIdRead = () => {
 }
 
 const read = () => {
-    console.log("does it get to here? clearing!")
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
