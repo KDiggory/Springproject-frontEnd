@@ -135,7 +135,7 @@ document.querySelector(".formContainer").addEventListener("submit", function(eve
       .then(
           console.log("in the update axios function, after put"))
       .catch(err => console.error(err))    
-      readUpdate()
+      readUpdated()
 },)
 // add event listener for reset button
 reset.addEventListener("click", () => {
@@ -144,7 +144,7 @@ reset.addEventListener("click", () => {
 })
 }
 
-const readUpdate = () => {
+const readUpdated = () => {
     const form = this;
     const id = form.idActual.value;
     const div =   document.querySelector(".formContainer");
@@ -218,7 +218,7 @@ const readUpdate = () => {
                         .catch(err => console.error(err))
                         console.log(res);
                         document.querySelector(".outputcontainer").innerText = "";
-                        readUpdate();
+                        readUpdated();
         });
         plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);

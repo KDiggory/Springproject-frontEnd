@@ -29,7 +29,6 @@ const showIdDel = () => {
     const idInput = document.createElement("input");
     idInput.setAttribute("type", "number");
     idInput.setAttribute("class", "input");
-    idInput.setAttribute("id", "idActual");
     idInput.setAttribute("name", "id");
     document.querySelector(".formContainer").appendChild(idInput);
   
@@ -49,7 +48,7 @@ const showIdDel = () => {
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
-        id = form.idActual.value; // a problem reading value here? but it works
+        id = form.id.value; // a problem reading value here? but it works
         console.log(id);
         while(div.firstChild){
             div.removeChild(div.firstChild);
@@ -63,7 +62,7 @@ const showIdDel = () => {
         .then(
             console.log("in the delete axios function"))
         .catch(err => console.error(err))    
-        readDelete(); // this is showing the list with the deleted on still in
+        read(); // this is showing the list with the deleted on still in
   },)
   // add event listener for reset button
   reset.addEventListener("click", () => {
@@ -72,83 +71,83 @@ const showIdDel = () => {
   })
   }
 
-    const readDelete = () => {
-        const div =   document.querySelector(".formContainer");
-        while(div.firstChild){
-            div.removeChild(div.firstChild);
-        }
-        const outputDiv =   document.querySelector(".outputcontainer");
-        while(outputDiv.firstChild){
-            outputDiv.removeChild(outputDiv.firstChild);
+    // const readDelete = () => {
+    //     const div =   document.querySelector(".formContainer");
+    //     while(div.firstChild){
+    //         div.removeChild(div.firstChild);
+    //     }
+    //     const outputDiv =   document.querySelector(".outputcontainer");
+    //     while(outputDiv.firstChild){
+    //         outputDiv.removeChild(outputDiv.firstChild);
     
-        axios
-        .get(`${baseURLCreate}/getAll`)
-        .then(res => {
-            const plants = res.data;
-            for(let i = 0; i<plants.length; i++){
-                console.log(plants[i]); // should log projects to console
-                const plantCol = document.createElement("div");
-                plantCol.setAttribute("class", "col");
+    //     axios
+    //     .get(`${baseURLCreate}/getAll`)
+    //     .then(res => {
+    //         const plants = res.data;
+    //         for(let i = 0; i<plants.length; i++){
+    //             console.log(plants[i]); // should log projects to console
+    //             const plantCol = document.createElement("div");
+    //             plantCol.setAttribute("class", "col");
     
-                const plantCard = document.createElement("div");
-                plantCard.setAttribute("class", "card");
+    //             const plantCard = document.createElement("div");
+    //             plantCard.setAttribute("class", "card");
     
-                const plantBody = document.createElement("div");
-                plantBody.setAttribute("class", "card-body");
+    //             const plantBody = document.createElement("div");
+    //             plantBody.setAttribute("class", "card-body");
     
-                const plantTitle = document.createElement("h2");
-                plantTitle.setAttribute("class", "card-title");
-                plantTitle.innerText = `${plants[i].name}`;
-                outputDiv.appendChild(plantTitle);
+    //             const plantTitle = document.createElement("h2");
+    //             plantTitle.setAttribute("class", "card-title");
+    //             plantTitle.innerText = `${plants[i].name}`;
+    //             outputDiv.appendChild(plantTitle);
     
-                const plantFoliage = document.createElement("p");
-                plantFoliage.setAttribute("class", "card-text");
-                plantFoliage.innerText = `Foliage colour: ${plants[i].foliageColour}`;
-                outputDiv.appendChild(plantFoliage);
+    //             const plantFoliage = document.createElement("p");
+    //             plantFoliage.setAttribute("class", "card-text");
+    //             plantFoliage.innerText = `Foliage colour: ${plants[i].foliageColour}`;
+    //             outputDiv.appendChild(plantFoliage);
     
-                const plantMonth = document.createElement("p");
-                plantMonth.setAttribute("class", "card-text");
-                plantMonth.innerText = `Planting month: ${plants[i].plantingMonth}`;
-                outputDiv.appendChild(plantMonth);
+    //             const plantMonth = document.createElement("p");
+    //             plantMonth.setAttribute("class", "card-text");
+    //             plantMonth.innerText = `Planting month: ${plants[i].plantingMonth}`;
+    //             outputDiv.appendChild(plantMonth);
     
-                const plantPosition = document.createElement("p");
-                plantPosition.setAttribute("class", "card-text");
-                plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}`;
-                outputDiv.appendChild(plantPosition);
+    //             const plantPosition = document.createElement("p");
+    //             plantPosition.setAttribute("class", "card-text");
+    //             plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}`;
+    //             outputDiv.appendChild(plantPosition);
     
-                const plantFlower = document.createElement("p");
-                plantFlower.setAttribute("class", "card-text");
-                plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
-                outputDiv.appendChild(plantFlower);
+    //             const plantFlower = document.createElement("p");
+    //             plantFlower.setAttribute("class", "card-text");
+    //             plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
+    //             outputDiv.appendChild(plantFlower);
 
-                const plantId = document.createElement("p");
-                plantId.setAttribute("class", "card-text");
-                plantId.innerText = `ID: ${plants[i].id}`;
-                outputDiv.appendChild(plantId);
+    //             const plantId = document.createElement("p");
+    //             plantId.setAttribute("class", "card-text");
+    //             plantId.innerText = `ID: ${plants[i].id}`;
+    //             outputDiv.appendChild(plantId);
     
-                const plantDel = document.createElement("button");
-                plantDel.setAttribute("id", "cardButton");
-                plantDel.innerText = "delete";
-                // plantDel.classList.add("btn", "btn-danger");
-                plantDel.addEventListener("click", () => {
-                        axios
-                            .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)
-                            .then(
-                                readCreate())
-                            .catch(err => console.error(err))
-                            console.log(res);
-                            document.querySelector(".outputcontainer").innerText = "";
-                            readCreate();
-            });
-            plantBody.appendChild(plantDel);
-            plantCard.appendChild(plantBody);
-            plantCol.appendChild(plantDel);
-            outputDiv.appendChild(plantCol);
-        }
+    //             const plantDel = document.createElement("button");
+    //             plantDel.setAttribute("id", "cardButton");
+    //             plantDel.innerText = "delete";
+    //             // plantDel.classList.add("btn", "btn-danger");
+    //             plantDel.addEventListener("click", () => {
+    //                     axios
+    //                         .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)
+    //                         .then(
+    //                             readCreate())
+    //                         .catch(err => console.error(err))
+    //                         console.log(res);
+    //                         document.querySelector(".outputcontainer").innerText = "";
+    //                         readCreate();
+    //         });
+    //         plantBody.appendChild(plantDel);
+    //         plantCard.appendChild(plantBody);
+    //         plantCol.appendChild(plantDel);
+    //         outputDiv.appendChild(plantCol);
+    //     }
     
-        })
+    //     })
     
-    }}
+    // }}
 
     buttonsDel.forEach(btn => {
         btn.addEventListener('click', event => {

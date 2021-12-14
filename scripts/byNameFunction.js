@@ -35,7 +35,6 @@ const showName = () => {
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("class", "input");
-  nameInput.setAttribute("id", "nameActual");
   nameInput.setAttribute("name", "plantName");
   document.querySelector(".formContainer").appendChild(nameInput);
   
@@ -56,7 +55,7 @@ const showName = () => {
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
-        const name = form.nameActual.value;
+        const name = form.plantName.value;
         console.log(name);
         const outputDiv =   document.querySelector(".outputcontainer");
     while(outputDiv.firstChild){
@@ -142,9 +141,7 @@ buttonsName.forEach(btn => {
     btn.addEventListener('click', event => {
         if (event.target.innerText === "read by name") {
         readByName();
-        } else {
-            console.log("problem");
-        }
+        } 
     });
 });
 

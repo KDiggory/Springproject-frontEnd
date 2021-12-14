@@ -30,7 +30,6 @@ const showMonth = () => {
   const monthInput = document.createElement("input");
   monthInput.setAttribute("type", "text");
   monthInput.setAttribute("class", "input");
-  monthInput.setAttribute("id", "monthActual");
   monthInput.setAttribute("name", "month");
   document.querySelector(".formContainer").appendChild(monthInput);
   
@@ -50,7 +49,7 @@ const showMonth = () => {
   document.querySelector(".formContainer").addEventListener("submit", function(event) {
     event.preventDefault();
     const form = this;
-    const month = form.monthActual.value;
+    const month = form.month.value; // it sometimes has a problem with this?
     const outputDiv =   document.querySelector(".outputcontainer");
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
