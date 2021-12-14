@@ -9,17 +9,18 @@ const read = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
 }
-    // console.log("in the read function id and others");
+    
     document.querySelector("#doingWhat").textContent = "Reading all entries";
     const output = document.createElement("h2");
     output.setAttribute("class", "output-text")
     document.querySelector("#outputDiv").appendChild(output);
+    
 
     axios.get(`${baseURL}/getAll`)
     .then(res => {
         const plants = res.data;
         for(let i = 0; i<plants.length; i++){
-            console.log(plants[i]); // should log projects to console
+            console.log(plants[i]); 
             const plantCol = document.createElement("div");
             plantCol.setAttribute("class", "row row-cols-2 row-cols-md-4 g-4");
                 
@@ -29,7 +30,7 @@ const read = () => {
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
 
-            const plantTitle = document.createElement("h2");
+            const plantTitle = document.createElement("h3");
             plantTitle.setAttribute("class", "card-title");
             plantTitle.innerText = `${plants[i].name}`;
             output.appendChild(plantTitle);
@@ -62,7 +63,7 @@ const read = () => {
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            // plantDel.classList.add("btn", "btn-danger");
+            
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURL}/deletePlant/${plants[i].id}`)

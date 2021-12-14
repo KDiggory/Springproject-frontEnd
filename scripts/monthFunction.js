@@ -51,21 +51,26 @@ const showMonth = () => {
     const form = this;
     const month = form.month.value; // it sometimes has a problem with this?
     const outputDiv =   document.querySelector(".outputcontainer");
+
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
-} 
-while(div.firstChild){
-    div.removeChild(div.firstChild);
-}
+        } 
+    while(div.firstChild){
+         div.removeChild(div.firstChild);
+    }
+    const output = document.createElement("h2");
+        output.setAttribute("class", "output-text")
+        document.querySelector("#outputDiv").appendChild(output);
+
+    document.querySelector("#doingWhat").textContent =""
     axios
     .get(`${baseURL}/getPlantByMonth/${month}`)
             .then( res => {
             console.log(res.data);
             const plants = res.data;
-            console.log(plants.length);
             for(let i = 0; i<plants.length; i++){
             const plantCol = document.createElement("div");
-            plantCol.setAttribute("class", "col");
+            plantCol.setAttribute("class", "row row-cols-2 row-cols-md-4 g-4");
 
             const plantCard = document.createElement("div");
             plantCard.setAttribute("class", "card");
@@ -73,31 +78,31 @@ while(div.firstChild){
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
 
-            const plantTitle = document.createElement("h2");
+            const plantTitle = document.createElement("h3");
             plantTitle.setAttribute("class", "card-title");
             plantTitle.innerText = `${plants[i].name}`;
-            outputDiv.appendChild(plantTitle);
+            output.appendChild(plantTitle);
         
 
             const plantFoliage = document.createElement("p");
             plantFoliage.setAttribute("class", "card-text");
             plantFoliage.innerText = `Foliage colour: ${plants[i].foliageColour}`;
-            outputDiv.appendChild(plantFoliage);
+            output.appendChild(plantFoliage);
 
             const plantMonth = document.createElement("p");
             plantMonth.setAttribute("class", "card-text");
             plantMonth.innerText = `Planting month: ${plants[i].plantingMonth}`;
-            outputDiv.appendChild(plantMonth);
+            output.appendChild(plantMonth);
 
             const plantPosition = document.createElement("p");
             plantPosition.setAttribute("class", "card-text");
             plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}`;
-            outputDiv.appendChild(plantPosition);
+            output.appendChild(plantPosition);
 
             const plantFlower = document.createElement("p");
             plantFlower.setAttribute("class", "card-text");
             plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
-            outputDiv.appendChild(plantFlower);
+            output.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
@@ -113,7 +118,7 @@ while(div.firstChild){
         plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);
         plantCol.appendChild(plantDel);
-        outputDiv.appendChild(plantCol);
+        output.appendChild(plantCol);
     }
 
      resBut.addEventListener("click", () => {

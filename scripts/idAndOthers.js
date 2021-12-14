@@ -53,14 +53,17 @@ const showIdRead = () => {
         event.preventDefault();
         const form = this;
         const id = form.id.value;
-        console.log(id); 
-        const outputDiv = document.querySelector("#outputDiv");
+        const outputDiv = document.createElement("h2");
+        outputDiv.setAttribute("class", "output-text")
+        document.querySelector("#outputDiv").appendChild(outputDiv);
+
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);   
 }
     while(div.firstChild){
         div.removeChild(div.firstChild);
     }
+    document.querySelector("#doingWhat").textContent =""
    
         axios
             .get(`${baseURL}/getPlantById/${id}`)
@@ -75,7 +78,7 @@ const showIdRead = () => {
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
 
-            const plantTitle = document.createElement("h2");
+            const plantTitle = document.createElement("h3");
             plantTitle.setAttribute("class", "card-title");
             plantTitle.innerText = `${plant.name}`;
             outputDiv.appendChild(plantTitle);
@@ -99,8 +102,6 @@ const showIdRead = () => {
             plantFlower.setAttribute("class", "card-text");
             plantFlower.innerText = `Flower colour: ${plant.flowerColour}`;
             outputDiv.appendChild(plantFlower);
-
-
 
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");

@@ -1,3 +1,31 @@
+body {
+	background: linear-gradient(270deg, #828f7d, #b3b47e, #5c9c74);
+	background-size: 600% 600%;
+	-webkit-animation: Gradient 30s ease infinite;
+	-moz-animation: Gradient 30s ease infinite;
+	animation: Gradient 30s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+
 #plants {
     height: 3.5%;
     width: 3.5%;
@@ -20,10 +48,14 @@
     align-items: center;
   }
 
+
+
 .button {
     border-radius: 15px;
     height: 25%;
 }
+
+
 .buttoncontainer {
     display: flex;
       vertical-align: top;
@@ -46,7 +78,7 @@
   font-family: 'Almendra Display';
   font-size:240%;
   }
-
+ 
 #line {
     width: 90%;  
     height: 2px;  
@@ -101,7 +133,7 @@ h1 {
     height: 25%;
     width:100%;
 }
-/* this doesnt work? */
+
 .card-body {
     color: black;
      -webkit-text-stroke: 1.5px black;
@@ -141,8 +173,28 @@ h1 {
     width: 20%;
     font-size:100%;
 }
-/* this doesnt work? */
+
 .inupt {
     border-radius: 15px;
    
+} 
+h2 {
+    font-size:80%;
+}
+.card-title {
+    font-size:200%;
+}
+.card-text {
+    font-size:150%;
+}
+#cardButton {
+    font-size:170%;
+
+}
+
+/* this doesnt work - i want a border round my card */
+.card-body {
+    border-radius: 15%;
+    border-color: black;
+    border-width: 5px;
 }

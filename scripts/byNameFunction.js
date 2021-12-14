@@ -41,6 +41,7 @@ const showName = () => {
 
   const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
+
     subBut.setAttribute("id", "submit");
     subBut.innerText = "Submit";
     document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -55,8 +56,7 @@ const showName = () => {
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
-        const name = form.plantName.value;
-        console.log(name);
+        const nameVar = form.plantName.value;
         const outputDiv =   document.querySelector(".outputcontainer");
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
@@ -64,17 +64,17 @@ const showName = () => {
 while(div.firstChild){
     div.removeChild(div.firstChild);
 }
-document.querySelector("#doingWhat").textContent = "Here are the results";
+document.querySelector("#doingWhat").textContent = "";
     const output = document.createElement("h2");
     output.setAttribute("class", "output-text")
     document.querySelector("#outputDiv").appendChild(output);
         axios
-        .get(`${baseURL}/getPlantByName/${name}`)
+        .get(`${baseURL}/getPlantByName/${nameVar}`)
                 .then( res => {
                 console.log(res.data);
                 const plants = res.data;
                 const plantCol = document.createElement("div");
-                plantCol.setAttribute("class", "col");
+                plantCol.setAttribute("class", "row row-cols-2 row-cols-md-4 g-4");
     
                 const plantCard = document.createElement("div");
                 plantCard.setAttribute("class", "card");
@@ -85,33 +85,33 @@ document.querySelector("#doingWhat").textContent = "Here are the results";
                 const plantTitle = document.createElement("h2");
                 plantTitle.setAttribute("class", "card-title");
                 plantTitle.innerText = `${plants.name}`;
-                outputDiv.appendChild(plantTitle);
+                output.appendChild(plantTitle);
             
     
                 const plantFoliage = document.createElement("p");
                 plantFoliage.setAttribute("class", "card-text");
                 plantFoliage.innerText = `Foliage colour: ${plants.foliageColour}`;
-                outputDiv.appendChild(plantFoliage);
+                output.appendChild(plantFoliage);
     
                 const plantMonth = document.createElement("p");
                 plantMonth.setAttribute("class", "card-text");
                 plantMonth.innerText = `Planting month: ${plants.plantingMonth}`;
-                outputDiv.appendChild(plantMonth);
+                output.appendChild(plantMonth);
     
                 const plantPosition = document.createElement("p");
                 plantPosition.setAttribute("class", "card-text");
                 plantPosition.innerText = `Planting position: ${plants.plantingPosition}`;
-                outputDiv.appendChild(plantPosition);
+                output.appendChild(plantPosition);
     
                 const plantFlower = document.createElement("p");
                 plantFlower.setAttribute("class", "card-text");
                 plantFlower.innerText = `Flower colour: ${plants.flowerColour}`;
-                outputDiv.appendChild(plantFlower);
+                output.appendChild(plantFlower);
 
                 const plantId = document.createElement("p");
                 plantId.setAttribute("class", "card-text");
                 plantId.innerText = `ID: ${plants.id}`;
-                outputDiv.appendChild(plantId);
+                output.appendChild(plantId);
     
                 const plantDel = document.createElement("button");
                 plantDel.setAttribute("id", "cardButton");
@@ -126,7 +126,7 @@ document.querySelector("#doingWhat").textContent = "Here are the results";
             plantBody.appendChild(plantDel);
             plantCard.appendChild(plantBody);
             plantCol.appendChild(plantDel);
-            outputDiv.appendChild(plantCol);
+            output.appendChild(plantCol);
     
          resBut.addEventListener("click", () => {
             showIdRead(); 
