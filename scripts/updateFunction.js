@@ -129,7 +129,7 @@ document.querySelector(".formContainer").addEventListener("submit", function(eve
         plantingPosition: form.positionActual.value,
         flowerColour: form.flowerActual.value,
         id: form.idActual.value
-    }
+    };
   console.log(data);
   axios
       .put(`${baseURLCreate}/updatePlant/${id}`, data)
@@ -201,6 +201,11 @@ const readUpdate = () => {
             plantFlower.setAttribute("class", "card-text");
             plantFlower.innerText = `Flower colour: ${plants.flowerColour}`;
             output.appendChild(plantFlower);
+
+            const plantId = document.createElement("p");
+            plantId.setAttribute("class", "card-text");
+            plantId.innerText = `ID: ${plants.id}`;
+            output.appendChild(plantId);
 
             const plantDel = document.createElement("button");
             plantDel.innerText = "delete";

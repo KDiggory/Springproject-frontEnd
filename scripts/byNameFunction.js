@@ -93,6 +93,11 @@ const showName = () => {
                 plantFlower.setAttribute("class", "card-text");
                 plantFlower.innerText = `Flower colour: ${plants.flowerColour}`;
                 outputDiv.appendChild(plantFlower);
+
+                const plantId = document.createElement("p");
+                plantId.setAttribute("class", "card-text");
+                plantId.innerText = `ID: ${plants.id}`;
+                output.appendChild(plantId);
     
                 const plantDel = document.createElement("button");
                 plantDel.innerText = "delete";

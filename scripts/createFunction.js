@@ -133,18 +133,15 @@ while(div.firstChild){
 
   // add event listener for submit button
 
-  submit.addEventListener("click", () => { // change this to submit the form instead
-      const name = nameActual.value;
-      const foliageColour = foliageColActual.value;
-      const plantingMonth = monthActual.value;
-      const plantingPosition = positionActual.value;
-      const flowerColour = flowerActual.value;
+  document.querySelector(".formContainer").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const form = this;
     const data = {
-        name: name,
-        foliageColour: foliageColour,
-        plantingMonth:plantingMonth,
-        plantingPosition: plantingPosition,
-        flowerColour: flowerColour   
+        name: form.nameActual.value,
+        foliageColour: form.foliageColActual.value,
+        plantingMonth: form.monthActual.value,
+        plantingPosition: form.positionActual.value,
+        flowerColour: form.flowerActual.value
     };
     console.log(data);
     axios
