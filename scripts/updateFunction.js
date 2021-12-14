@@ -102,7 +102,6 @@ idInput.setAttribute("class", "input");
 idInput.setAttribute("id", "idActual");
 idInput.setAttribute("name", "id");
 document.querySelector(".formContainer").appendChild(idInput);
-document.querySelector(".formContainer").appendChild(document.createElement("br"));
 
 const subBut = document.createElement("button");
 subBut.setAttribute("class", "formButton");
@@ -121,13 +120,13 @@ document.querySelector(".formContainer").appendChild(resBut);
 document.querySelector(".formContainer").addEventListener("submit", function(event) {
     event.preventDefault();
     const form = this;
-    const id = form.idActual.value;
+    const id = form.id.value;
     const data = {
         name: form.nameActual.value,
-        foliageColour: form.foliageColActual.value,
-        plantingMonth: form.monthActual.value,
-        plantingPosition: form.positionActual.value,
-        flowerColour: form.flowerActual.value,
+        foliageColour: form.foliageColour.value,
+        plantingMonth: form.month.value,
+        plantingPosition: form.position.value,
+        flowerColour: form.flowerCol.value,
         id: form.idActual.value
     };
   console.log(data);
@@ -172,6 +171,7 @@ const readUpdate = () => {
 
             const plantCard = document.createElement("div");
             plantCard.setAttribute("class", "card");
+            // plantCard.setAttribute("style", "width:18rem");
 
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
@@ -207,8 +207,9 @@ const readUpdate = () => {
             output.appendChild(plantId);
 
             const plantDel = document.createElement("button");
+            plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            plantDel.classList.add("btn", "btn-danger");
+            // plantDel.classList.add("btn", "btn-danger");
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURLCreate}/deletePlant/${plants.id}`)

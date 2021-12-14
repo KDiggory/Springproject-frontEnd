@@ -63,6 +63,31 @@
     display: flex;
     justify-content: space-around;
 }
+.card {
+  border-style: solid;
+  border-radius: 4;
+  border-color: black;
+  font-family: 'Almendra Display';
+  font-size:150%;
+  
+}
+
+/* h2 {
+  color: black;
+  -webkit-text-stroke: 1.8px black;
+  font-family: 'Almendra Display';
+  font-size:150%;
+  
+}
+p {
+  color: black;
+  -webkit-text-stroke: 1.5px black;
+  font-family: 'Almendra Display';
+  font-size:100%;
+} */
+
+
+
 
 .button {
     color: black;
