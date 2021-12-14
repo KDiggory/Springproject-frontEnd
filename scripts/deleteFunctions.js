@@ -51,6 +51,13 @@ const showIdDel = () => {
         const form = this;
         id = form.idActual.value; // a problem reading value here? but it works
         console.log(id);
+        while(div.firstChild){
+            div.removeChild(div.firstChild);
+        }
+        document.querySelector("#doingWhat").textContent = "Deleted, here is whats left - actually showing the delted one still?";
+    const output = document.createElement("h2");
+    output.setAttribute("class", "output-text")
+    document.querySelector("#outputDiv").appendChild(output);
         axios
         .delete(`${baseURLCreate}/deletePlant/${id}`)
         .then(

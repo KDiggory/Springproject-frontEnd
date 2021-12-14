@@ -120,13 +120,13 @@ document.querySelector(".formContainer").appendChild(resBut);
 document.querySelector(".formContainer").addEventListener("submit", function(event) {
     event.preventDefault();
     const form = this;
-    const id = form.idActual.value;
+    const id = form.id.value;
     const data = {
         name: form.nameActual.value,
-        foliageColour: form.foliageColActual.value,
-        plantingMonth: form.monthActual.value,
-        plantingPosition: form.positionActual.value,
-        flowerColour: form.flowerActual.value,
+        foliageColour: form.foliageColour.value,
+        plantingMonth: form.month.value,
+        plantingPosition: form.position.value,
+        flowerColour: form.flowerCol.value,
         id: form.idActual.value
     };
   console.log(data);

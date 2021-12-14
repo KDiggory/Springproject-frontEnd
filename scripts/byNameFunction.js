@@ -9,6 +9,9 @@ const readByName = () => {
 }
     console.log("in the read by name function");
     document.querySelector("#doingWhat").textContent = "Please enter the name of the plants you would like to find";
+    const output = document.createElement("h2");
+    output.setAttribute("class", "output-text")
+    document.querySelector("#outputDiv").appendChild(output);
     showName();
 }
 
@@ -21,6 +24,7 @@ const showName = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
 }
+
 
     const nameInputLabel = document.createElement("label");
   nameInputLabel.setAttribute("for", "plantName");
@@ -58,6 +62,13 @@ const showName = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
 }
+while(div.firstChild){
+    div.removeChild(div.firstChild);
+}
+document.querySelector("#doingWhat").textContent = "Here are the results";
+    const output = document.createElement("h2");
+    output.setAttribute("class", "output-text")
+    document.querySelector("#outputDiv").appendChild(output);
         axios
         .get(`${baseURL}/getPlantByName/${name}`)
                 .then( res => {
@@ -101,12 +112,11 @@ const showName = () => {
                 const plantId = document.createElement("p");
                 plantId.setAttribute("class", "card-text");
                 plantId.innerText = `ID: ${plants.id}`;
-                output.appendChild(plantId);
+                outputDiv.appendChild(plantId);
     
                 const plantDel = document.createElement("button");
                 plantDel.setAttribute("id", "cardButton");
                 plantDel.innerText = "delete";
-                // plantDel.classList.add("btn", "btn-danger");
                 plantDel.addEventListener("click", () => {
                         axios
                             .delete(`${baseURL}/deletePlant/${plants.id}`)
@@ -114,24 +124,26 @@ const showName = () => {
                             .catch(err => console.error(err))
                             console.log(res);
             });
-        
             plantBody.appendChild(plantDel);
             plantCard.appendChild(plantBody);
             plantCol.appendChild(plantDel);
             outputDiv.appendChild(plantCol);
-        },
     
          resBut.addEventListener("click", () => {
             showIdRead(); 
-         }))
+        })
     })
-        .catch(err => console.error(err))     // get  byNameFunction.js:118 Uncaught TypeError: Cannot read properties of undefined (reading 'catch')  
+        .catch(err => console.error(err))       
+    })
+    
     }
 
 buttonsName.forEach(btn => {
     btn.addEventListener('click', event => {
         if (event.target.innerText === "read by name") {
-            readByName();
+        readByName();
+        } else {
+            console.log("problem");
         }
     });
 });

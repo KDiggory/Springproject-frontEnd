@@ -54,6 +54,9 @@ const showMonth = () => {
     const outputDiv =   document.querySelector(".outputcontainer");
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
+} 
+while(div.firstChild){
+    div.removeChild(div.firstChild);
 }
     axios
     .get(`${baseURL}/getPlantByMonth/${month}`)
@@ -98,8 +101,8 @@ const showMonth = () => {
             outputDiv.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
+            plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            plantDel.classList.add("btn", "btn-danger");
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURL}/deletePlant/${plants[i].id}`)

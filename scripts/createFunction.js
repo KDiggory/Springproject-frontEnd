@@ -35,7 +35,7 @@ while(div.firstChild){
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
   nameInput.setAttribute("class", "input");
-  nameInput.setAttribute("id", "nameActual");
+//   nameInput.setAttribute("id", "nameActual");
   nameInput.setAttribute("name", "plantName");
   document.querySelector(".formContainer").appendChild(nameInput);
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -49,7 +49,7 @@ while(div.firstChild){
   const foliageInput = document.createElement("input");
   foliageInput.setAttribute("type", "text");
   foliageInput.setAttribute("class", "input");
-  foliageInput.setAttribute("id", "foliageColActual");
+//   foliageInput.setAttribute("id", "foliageColActual");
   foliageInput.setAttribute("name", "foliageColour");
   document.querySelector(".formContainer").appendChild(foliageInput);
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -63,7 +63,7 @@ while(div.firstChild){
   const monthInput = document.createElement("input");
   monthInput.setAttribute("type", "text");
   monthInput.setAttribute("class", "input");
-  monthInput.setAttribute("id", "monthActual");
+//   monthInput.setAttribute("id", "monthActual");
   monthInput.setAttribute("name", "month");
   document.querySelector(".formContainer").appendChild(monthInput);
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -77,7 +77,7 @@ while(div.firstChild){
   const positionInput = document.createElement("input");
   positionInput.setAttribute("type", "text");
   positionInput.setAttribute("class", "input");
-  positionInput.setAttribute("id", "positionActual");
+//   positionInput.setAttribute("id", "positionActual");
   positionInput.setAttribute("name", "position");
   document.querySelector(".formContainer").appendChild(positionInput);
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -91,7 +91,7 @@ while(div.firstChild){
   const flowerInput = document.createElement("input");
   flowerInput.setAttribute("type", "text");
   flowerInput.setAttribute("class", "input");
-  flowerInput.setAttribute("id", "flowerActual");
+//   flowerInput.setAttribute("id", "flowerActual");
   flowerInput.setAttribute("name", "flowerCol");
   document.querySelector(".formContainer").appendChild(flowerInput);
   
@@ -115,11 +115,11 @@ while(div.firstChild){
     event.preventDefault();
     const form = this;
     const data = {
-        name: form.nameActual.value,
-        foliageColour: form.foliageColActual.value,
-        plantingMonth: form.monthActual.value,
-        plantingPosition: form.positionActual.value,
-        flowerColour: form.flowerActual.value
+        name: form.plantName.value,
+        foliageColour: form.foliageColour.value,
+        plantingMonth: form.month.value,
+        plantingPosition: form.position.value,
+        flowerColour: form.flowerCol.value
     };
     console.log(data);
     axios
@@ -127,7 +127,7 @@ while(div.firstChild){
         .then(
             console.log("in the create axios function, after post"))
         .catch(err => console.error(err))    
-        readCreate()
+        read()
 },)
  // add event listener for reset button
  reset.addEventListener("click", () => {
@@ -140,79 +140,80 @@ while(div.firstChild){
  })
 }
 // read is referenced by other methods so needs to be in each script
-const readCreate = () => {
-    console.log("In read, create") // this only reads the old ones, not the new one
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
-    axios
-    .get(`${baseURLCreate}/getAll`)
-    .then(res => {
-        const plants = res.data;
-        for(let i = 0; i<plants.length; i++){
-            console.log(plants[i]); // should log projects to console
-            const plantCol = document.createElement("div");
-            plantCol.setAttribute("class", "col");
+// const readCreate = () => {
+//     console.log("In read, create") // this only reads the old ones, not the new one
+//     const div =   document.querySelector(".formContainer");
+//     while(div.firstChild){
+//         div.removeChild(div.firstChild);
+//     }
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
+//     axios
+//     .get(`${baseURLCreate}/getAll`)
+//     .then(res => {
+//         const plants = res.data;
+//         for(let i = 0; i<plants.length; i++){
+//             console.log(plants[i]); // should log projects to console
+//             const plantCol = document.createElement("div");
+//             plantCol.setAttribute("class", "col");
 
-            const plantCard = document.createElement("div");
-            plantCard.setAttribute("class", "card");
+//             const plantCard = document.createElement("div");
+//             plantCard.setAttribute("class", "card");
 
-            const plantBody = document.createElement("div");
-            plantBody.setAttribute("class", "card-body");
+//             const plantBody = document.createElement("div");
+//             plantBody.setAttribute("class", "card-body");
 
-            const plantTitle = document.createElement("h2");
-            plantTitle.setAttribute("class", "card-title");
-            plantTitle.innerText = `${plants[i].name}`;
-            output.appendChild(plantTitle);
+//             const plantTitle = document.createElement("h2");
+//             plantTitle.setAttribute("class", "card-title");
+//             plantTitle.innerText = `${plants[i].name}`;
+//             outputDiv.appendChild(plantTitle);
 
-            const plantFoliage = document.createElement("p");
-            plantFoliage.setAttribute("class", "card-text");
-            plantFoliage.innerText = `Foliage colour: ${plants[i].foliageColour}`;
-            output.appendChild(plantFoliage);
+//             const plantFoliage = document.createElement("p");
+//             plantFoliage.setAttribute("class", "card-text");
+//             plantFoliage.innerText = `Foliage colour: ${plants[i].foliageColour}`;
+//             outputDiv.appendChild(plantFoliage);
 
-            const plantMonth = document.createElement("p");
-            plantMonth.setAttribute("class", "card-text");
-            plantMonth.innerText = `Planting month: ${plants[i].plantingMonth}`;
-            output.appendChild(plantMonth);
+//             const plantMonth = document.createElement("p");
+//             plantMonth.setAttribute("class", "card-text");
+//             plantMonth.innerText = `Planting month: ${plants[i].plantingMonth}`;
+//             outputDiv.appendChild(plantMonth);
 
-            const plantPosition = document.createElement("p");
-            plantPosition.setAttribute("class", "card-text");
-            plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}`;
-            output.appendChild(plantPosition);
+//             const plantPosition = document.createElement("p");
+//             plantPosition.setAttribute("class", "card-text");
+//             plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}`;
+//             outputDiv.appendChild(plantPosition);
 
-            const plantFlower = document.createElement("p");
-            plantFlower.setAttribute("class", "card-text");
-            plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
-            output.appendChild(plantFlower);
+//             const plantFlower = document.createElement("p");
+//             plantFlower.setAttribute("class", "card-text");
+//             plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
+//             outputDiv.appendChild(plantFlower);
 
-            const plantDel = document.createElement("button");
-            plantDel.setAttribute("id", "cardButton");
-            plantDel.innerText = "delete";
-            // plantDel.classList.add("btn", "btn-danger");
-            plantDel.addEventListener("click", () => {
-                    axios
-                        .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)
-                        .then(
-                            readCreate())
-                        .catch(err => console.error(err))
-                        console.log(res);
-                        document.querySelector(".outputcontainer").innerText = "";
-                        readCreate();
-        });
-        plantBody.appendChild(plantDel);
-        plantCard.appendChild(plantBody);
-        plantCol.appendChild(plantDel);
-        output.appendChild(plantCol);
-    }
+//             const plantDel = document.createElement("button");
+//             plantDel.setAttribute("id", "cardButton");
+//             plantDel.innerText = "delete";
+//             // plantDel.classList.add("btn", "btn-danger");
+//             plantDel.addEventListener("click", () => {
+//                     axios
+//                         .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)
+//                         .then(
+//                             // readCreate()
+//                             )
+//                         .catch(err => console.error(err))
+//                         console.log(res);
+//                         document.querySelector(".outputcontainer").innerText = "";
+//                         read();
+//         });
+//         plantBody.appendChild(plantDel);
+//         plantCard.appendChild(plantBody);
+//         plantCol.appendChild(plantDel);
+//         outputDiv.appendChild(plantCol);
+//     }
 
-    })
+//     })
 
-}
+// }
 buttons2.forEach(btn => {
     btn.addEventListener('click', event => {
         if (event.target.innerText === "create") {
