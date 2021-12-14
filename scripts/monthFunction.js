@@ -33,8 +33,7 @@ const showMonth = () => {
   monthInput.setAttribute("id", "monthActual");
   monthInput.setAttribute("name", "month");
   document.querySelector(".formContainer").appendChild(monthInput);
-  document.querySelector(".formContainer").appendChild(document.createElement("br"));
-
+  
   const subBut = document.createElement("button");
   subBut.setAttribute("class", "formButton");
   subBut.setAttribute("id", "submit");

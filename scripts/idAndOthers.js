@@ -34,7 +34,6 @@ const showIdRead = () => {
     idInput.setAttribute("id", "idActual");
     idInput.setAttribute("name", "id");
     document.querySelector(".formContainer").appendChild(idInput);
-    document.querySelector(".formContainer").appendChild(document.createElement("br"));
   
     const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
@@ -99,8 +98,9 @@ const showIdRead = () => {
             outputDiv.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
+            plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            plantDel.classList.add("btn", "btn-danger");
+            // plantDel.classList.add("btn", "btn-danger");
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURL}/deletePlant/${plant.id}`)
@@ -131,7 +131,7 @@ const read = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
 }
-    console.log("in the read function");
+    // console.log("in the read function id and others");
     document.querySelector("#doingWhat").textContent = "Reading all entries";
     const output = document.createElement("h2");
     output.setAttribute("class", "output-text")
@@ -146,7 +146,7 @@ const read = () => {
             plantCol.setAttribute("class", "col");
 
             const plantCard = document.createElement("div");
-            plantCard.setAttribute("class", "card");
+            plantCard.setAttribute("class", "card border rounded");
 
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
@@ -182,8 +182,9 @@ const read = () => {
             output.appendChild(plantId);
 
             const plantDel = document.createElement("button");
+            plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            plantDel.classList.add("btn", "btn-danger");
+            // plantDel.classList.add("btn", "btn-danger");
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURL}/deletePlant/${plants[i].id}`)

@@ -32,19 +32,18 @@ const showIdDel = () => {
     idInput.setAttribute("id", "idActual");
     idInput.setAttribute("name", "id");
     document.querySelector(".formContainer").appendChild(idInput);
-    document.querySelector(".formContainer").appendChild(document.createElement("br"));
   
     const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
     subBut.setAttribute("id", "submit");
-    subBut.innerText = "Yes, delete that plant";
+    subBut.innerText = "Yes, delete!";
     document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
     resBut.setAttribute("class", "formButton");
     resBut.setAttribute("id", "reset");
-    resBut.innerText = "Nope, changed my mind. Reset!";
+    resBut.innerText = "No, Reset!";
     document.querySelector(".formContainer").appendChild(resBut);
 
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
@@ -121,8 +120,9 @@ const showIdDel = () => {
                 outputDiv.appendChild(plantId);
     
                 const plantDel = document.createElement("button");
+                plantDel.setAttribute("id", "cardButton");
                 plantDel.innerText = "delete";
-                plantDel.classList.add("btn", "btn-danger");
+                // plantDel.classList.add("btn", "btn-danger");
                 plantDel.addEventListener("click", () => {
                         axios
                             .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)

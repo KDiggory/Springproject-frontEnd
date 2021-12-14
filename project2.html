@@ -8,14 +8,14 @@
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Gardening app</title>
+    <title>Plant List</title>
     <!-- axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
         integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Google font  -->
     <link href='https://fonts.googleapis.com/css?family=Almendra Display' rel='stylesheet'>
-    <link rel="stylesheet" href="styles/project.CSS">
+    <link rel="stylesheet" href="styles/project2.CSS">
     
 </head>
 
@@ -25,7 +25,7 @@
     <img id="plants" src="images/poppy.png" alt="The outline of a stylised poppy seed head">
     <img id="plantsS" src="images/flowerPoppyFlip.png" alt="The outline of a stylised poppy seed head">
     <img id="plants" src="images/lavendar.png" alt="The outline of a stylised poppy seed head">
-    <h1 id="welcome">Katie's awesome and very cool gardening app!</h1>
+    <h1 id="welcome">Katie's Plant List</h1>
 
     <img id="plants" src="images/lavendarFlip.png" alt="The outline of a stylised poppy seed head">
     <img id="plantsS" src="images/flowerPoppy.png" alt="The outline of a stylised poppy seed head">
@@ -46,24 +46,29 @@
         <button class="button" id="delete">delete</button>
         <button class="button" id="clear">reset this page</button>
         
-        
     </div>
-    <div id="theform" class="formcontainer">
+    <div> 
+        <hr id="line">
+    </div>
+   
+    <div id="theform">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm">
                 <form class="formContainer"></form>
-                
-
-                
+  
             </div>
-        </div>
+       
     </div>
-    <div id="whatDoing" class="col-md-4">
+    <div id="whatDoing" class="col-sm">
         <h2 id="doingWhat" ></h2>
     </div>
 </div>
+<div class="col-sm">
     <div id="outputDiv" class="outputcontainer">
     </div>
+</div>
+        
+</div>
     
     <script src="scripts/idAndOthers.js"></script>
     <script src="scripts/createFunction.js"></script>
@@ -71,8 +76,7 @@
     <script src="scripts/deleteFunctions.js"></script>
     <script src="scripts/monthFunction.js"></script>
     <script src="scripts/byNameFunction.js"></script>
-    
-    
+
 </body>
 
 </html>

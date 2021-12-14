@@ -94,7 +94,7 @@ while(div.firstChild){
   flowerInput.setAttribute("id", "flowerActual");
   flowerInput.setAttribute("name", "flowerCol");
   document.querySelector(".formContainer").appendChild(flowerInput);
-  document.querySelector(".formContainer").appendChild(document.createElement("br"));
+  
 
   const subBut = document.createElement("button");
   subBut.setAttribute("class", "formButton");
@@ -191,8 +191,9 @@ const readCreate = () => {
             output.appendChild(plantFlower);
 
             const plantDel = document.createElement("button");
+            plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            plantDel.classList.add("btn", "btn-danger");
+            // plantDel.classList.add("btn", "btn-danger");
             plantDel.addEventListener("click", () => {
                     axios
                         .delete(`${baseURLCreate}/deletePlant/${plants[i].id}`)

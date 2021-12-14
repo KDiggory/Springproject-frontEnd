@@ -34,7 +34,7 @@ const showName = () => {
   nameInput.setAttribute("id", "nameActual");
   nameInput.setAttribute("name", "plantName");
   document.querySelector(".formContainer").appendChild(nameInput);
-  document.querySelector(".formContainer").appendChild(document.createElement("br"));
+  
 
   const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
@@ -104,8 +104,9 @@ const showName = () => {
                 output.appendChild(plantId);
     
                 const plantDel = document.createElement("button");
+                plantDel.setAttribute("id", "cardButton");
                 plantDel.innerText = "delete";
-                plantDel.classList.add("btn", "btn-danger");
+                // plantDel.classList.add("btn", "btn-danger");
                 plantDel.addEventListener("click", () => {
                         axios
                             .delete(`${baseURL}/deletePlant/${plants.id}`)
