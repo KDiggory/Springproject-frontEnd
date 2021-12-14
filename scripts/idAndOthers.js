@@ -100,6 +100,8 @@ const showIdRead = () => {
             plantFlower.innerText = `Flower colour: ${plant.flowerColour}`;
             outputDiv.appendChild(plantFlower);
 
+
+
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
