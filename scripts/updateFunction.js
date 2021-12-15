@@ -143,6 +143,8 @@ const readUpdated = () => {
     clear();
     document.querySelector("#doingWhat").textContent = "Updated!";
     
+    // COULDNT GET THIS TO WORK - IT WAS RETURNING THE OLD ENTRY, NOT THE UPDATED ONE
+
     // const output = document.createElement("h2");
     // output.setAttribute("class", "output-text")
     // document.querySelector(".outputcontainer").appendChild(output);
