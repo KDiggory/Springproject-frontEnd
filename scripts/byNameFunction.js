@@ -67,68 +67,58 @@ const showName = () => {
 //     div.removeChild(div.firstChild);
 // }
 document.querySelector("#doingWhat").textContent = "";
-    const output = document.createElement("h2");
-    output.setAttribute("class", "output-text")
-    document.querySelector("#outputDiv").appendChild(output);
+const outputDiv = document.querySelector("#outputDiv");;
         axios
         .get(`${baseURL}/getPlantByName/${plantNameByName}`)
                 .then( res => {
-                console.log(res.data);
-                const plants = res.data;
-                const plantCol = document.createElement("div");
-                plantCol.setAttribute("class", "row row-cols-2 row-cols-md-4 g-4");
-    
-                const plantCard = document.createElement("div");
-                plantCard.setAttribute("class", "card");
-    
-                const plantBody = document.createElement("div");
-                plantBody.setAttribute("class", "card-body");
-    
-                const plantTitle = document.createElement("h2");
-                plantTitle.setAttribute("class", "card-title");
-                plantTitle.innerText = `${plants.name}`;
-                output.appendChild(plantTitle);
-            
-    
-                const plantFoliage = document.createElement("p");
-                plantFoliage.setAttribute("class", "card-text");
-                plantFoliage.innerText = `Foliage colour: ${plants.foliageColour}`;
-                output.appendChild(plantFoliage);
-    
-                const plantMonth = document.createElement("p");
-                plantMonth.setAttribute("class", "card-text");
-                plantMonth.innerText = `Planting month: ${plants.plantingMonth}`;
-                output.appendChild(plantMonth);
-    
-                const plantPosition = document.createElement("p");
-                plantPosition.setAttribute("class", "card-text");
-                plantPosition.innerText = `Planting position: ${plants.plantingPosition}`;
-                output.appendChild(plantPosition);
-    
-                const plantFlower = document.createElement("p");
-                plantFlower.setAttribute("class", "card-text");
-                plantFlower.innerText = `Flower colour: ${plants.flowerColour}`;
-                output.appendChild(plantFlower);
-
-                const plantId = document.createElement("p");
-                plantId.setAttribute("class", "card-text");
-                plantId.innerText = `ID: ${plants.id}`;
-                output.appendChild(plantId);
-    
-                const plantDel = document.createElement("button");
-                plantDel.setAttribute("id", "cardButton");
-                plantDel.innerText = "delete";
-                plantDel.addEventListener("click", () => {
-                        axios
-                            .delete(`${baseURL}/deletePlant/${plants.id}`)
-                            .then(res => read())                   
-                            .catch(err => console.error(err))
-                            console.log(res);
-            });
-            plantBody.appendChild(plantDel);
-            plantCard.appendChild(plantBody);
-            plantCol.appendChild(plantDel);
-            output.appendChild(plantCol);
+                    const plants = res.data;
+                    console.log(plants); 
+  
+                    const plantCard = document.createElement("div");
+                    plantCard.setAttribute("class", "card");
+        
+                    const plantBody = document.createElement("div");
+                    plantBody.setAttribute("class", "card-body");
+                    plantBody.setAttribute("style", "width: 18rem; ");
+                    
+        
+                    const plantTitle = document.createElement("h3");
+                    plantTitle.setAttribute("class", "card-title");
+                    plantTitle.innerText = `${plants.name}\r\n`;
+                    plantBody.appendChild(plantTitle);
+        
+                    const info = document.createElement("p");
+                    info.setAttribute("class", "card-text");
+                    info.innerText = `\r\nFoliage colour: ${plants.foliageColour}\r\n
+                    Planting month: ${plants.plantingMonth}\r\n
+                    Planting position: ${plants.plantingPosition}\r\n
+                    Flower colour: ${plants.flowerColour}\r\n
+                    ID: ${plants.id}\r\n `;
+                     plantBody.appendChild(info);
+        
+                    const plantDel = document.createElement("button");
+                    plantDel.setAttribute("id", "cardButton");
+                    plantDel.innerText = "delete";
+        
+                    // const plantUpdate = document.createElement("button");
+                    // plantUpdate.setAttribute("id", "cardButtonUpdate");
+                    // plantUpdate.innerText = "update";
+        
+                    plantDel.addEventListener("click", () => {
+                            axios
+                                .delete(`${baseURL}/deletePlant/${plants.id}`)
+                                .then(res => read())
+                                .catch(err => console.error(err))
+                                console.log(res);
+                                document.querySelector(".outputcontainer").innerText = "";
+                                read();
+                }        
+                );
+                // plantUpdate.addEventListener("click", update());
+        
+                plantCard.appendChild(plantBody);
+                plantCard.appendChild(plantDel);
+                outputDiv.appendChild(plantCard); 
     
          resBut.addEventListener("click", () => {
             showIdRead(); 
