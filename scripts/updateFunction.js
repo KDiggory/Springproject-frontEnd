@@ -8,10 +8,6 @@ const baseURLUpdate = "http://localhost:8080";
 
 const update = () => {
     clear();
-//     const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
 console.log("in the update function");
 document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to update and the new details";
 showFormUpdate();

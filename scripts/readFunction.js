@@ -16,7 +16,6 @@ const read = () => {
   
             const plantCard = document.createElement("div");
             plantCard.setAttribute("class", "card");
-            // plantCard.setAttribute("style", "width: 18rem; ");
 
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
@@ -37,26 +36,13 @@ const read = () => {
             ID: ${plants[i].id}\r\n `;
              plantBody.appendChild(info);
 
-            // const plantMonth = document.createElement("p");
-            // plantMonth.innerText= `Planting month: ${plants[i].plantingMonth}\r\n`;
-            // plantBody.appendChild(plantMonth);
-
-            // const plantPosition = document.createElement("p");
-            // plantPosition.innerText = `Planting position: ${plants[i].plantingPosition}\r\n`;
-            // plantBody.appendChild(plantPosition);
-
-            // const plantFlower = document.createElement("p");
-            // plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}\r\n`;
-            // plantBody.appendChild(plantFlower);
-
-            // const plantId = document.createElement("p");
-            // plantId.innerText = `ID: ${plants[i].id}\r\n`;
-            // plantBody.appendChild(plantId);
-
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-            // plantBody.appendChild(plantDel);
+
+            // const plantUpdate = document.createElement("button");
+            // plantUpdate.setAttribute("id", "cardButtonUpdate");
+            // plantUpdate.innerText = "update";
 
             plantDel.addEventListener("click", () => {
                     axios
@@ -68,11 +54,10 @@ const read = () => {
                         read();
         }        
         );
+        // plantUpdate.addEventListener("click", update());
 
-        // plantBody.appendChild(plantDel);
         plantCard.appendChild(plantBody);
         plantCard.appendChild(plantDel);
-
         outputDiv.appendChild(plantCard); 
     }
 
