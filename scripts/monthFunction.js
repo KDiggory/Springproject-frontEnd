@@ -13,14 +13,15 @@ const readByMonth = () => {
 }
 
 const showMonth = () => {
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
+//     const div =   document.querySelector(".formContainer");
+//     while(div.firstChild){
+//         div.removeChild(div.firstChild);
+//     }
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
     const monthInputLabel = document.createElement("label");
   monthInputLabel.setAttribute("for", "month");
   monthInputLabel.setAttribute("class", "label");
@@ -50,14 +51,14 @@ const showMonth = () => {
     event.preventDefault();
     const form = this;
     const month = form.month.value; // it sometimes has a problem with this?
-    const outputDiv =   document.querySelector(".outputcontainer");
-
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-        } 
-    while(div.firstChild){
-         div.removeChild(div.firstChild);
-    }
+    const outputDiv =  document.querySelector(".outputcontainer");
+    clear();
+    // while(outputDiv.firstChild){
+    //     outputDiv.removeChild(outputDiv.firstChild);
+    //     } 
+    // while(div.firstChild){
+    //      div.removeChild(div.firstChild);
+    // }
     const output = document.createElement("h2");
         output.setAttribute("class", "output-text")
         document.querySelector("#outputDiv").appendChild(output);
@@ -103,6 +104,11 @@ const showMonth = () => {
             plantFlower.setAttribute("class", "card-text");
             plantFlower.innerText = `Flower colour: ${plants[i].flowerColour}`;
             output.appendChild(plantFlower);
+
+            const plantId = document.createElement("p");
+            plantId.setAttribute("class", "card-text");
+            plantId.innerText = `ID: ${plants[i].id}`;
+            output.appendChild(plantId);
 
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");

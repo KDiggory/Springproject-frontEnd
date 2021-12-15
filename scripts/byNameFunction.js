@@ -3,10 +3,11 @@
 const buttonsName = document.querySelectorAll(".button");
 
 const readByName = () => {
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
     console.log("in the read by name function");
     document.querySelector("#doingWhat").textContent = "Please enter the name of the plants you would like to find";
     const output = document.createElement("h2");
@@ -16,14 +17,15 @@ const readByName = () => {
 }
 
 const showName = () => {
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
+//     const div =   document.querySelector(".formContainer");
+//     while(div.firstChild){
+//         div.removeChild(div.firstChild);
+//     }
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
 
 
     const nameInputLabel = document.createElement("label");
@@ -41,7 +43,6 @@ const showName = () => {
 
   const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
-
     subBut.setAttribute("id", "submit");
     subBut.innerText = "Submit";
     document.querySelector(".formContainer").appendChild(document.createElement("br"));
@@ -56,20 +57,21 @@ const showName = () => {
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
-        const nameVar = form.plantName.value;
-        const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
-while(div.firstChild){
-    div.removeChild(div.firstChild);
-}
+        const plantNameByName = form.plantName.value; 
+        clear();
+//         const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
+// while(div.firstChild){
+//     div.removeChild(div.firstChild);
+// }
 document.querySelector("#doingWhat").textContent = "";
     const output = document.createElement("h2");
     output.setAttribute("class", "output-text")
     document.querySelector("#outputDiv").appendChild(output);
         axios
-        .get(`${baseURL}/getPlantByName/${nameVar}`)
+        .get(`${baseURL}/getPlantByName/${plantNameByName}`)
                 .then( res => {
                 console.log(res.data);
                 const plants = res.data;

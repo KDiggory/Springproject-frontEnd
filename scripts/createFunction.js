@@ -8,10 +8,11 @@ const buttons2 = document.querySelectorAll(".button");
 const baseURLCreate = "http://localhost:8080";
 
 const create = () => {
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
     console.log("in the create function");
     console.log("what do you want to create")
     document.querySelector("#doingWhat").textContent = "Please enter the details of the plant you want to add to the database";
@@ -19,11 +20,12 @@ const create = () => {
 }
 
 const showFormCreate = () => {
+    clear();
     // clear anything currently there
-const div =   document.querySelector(".formContainer");
-while(div.firstChild){
-    div.removeChild(div.firstChild);
-}
+// const div =   document.querySelector(".formContainer");
+// while(div.firstChild){
+//     div.removeChild(div.firstChild);
+// }
   const nameInputLabel = document.createElement("label");
   nameInputLabel.setAttribute("for", "plantName");
   nameInputLabel.setAttribute("class", "label");
@@ -107,7 +109,7 @@ while(div.firstChild){
     event.preventDefault();
     const form = this;
     const data = {
-        name: form.plantName.value,
+        name: form.plantName.value, // its unhappy with this
         foliageColour: form.foliageColour.value,
         plantingMonth: form.month.value,
         plantingPosition: form.position.value,

@@ -1,5 +1,5 @@
 "use strict";
-var id;
+let id;
 const buttonsDel = document.querySelectorAll(".button");
 
 
@@ -16,10 +16,11 @@ const deleteById = () => {
 }
 
 const showIdDel = () => {
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
+    clear();
+    // const div =   document.querySelector(".formContainer");
+    // while(div.firstChild){
+    //     div.removeChild(div.firstChild);
+    // }
     const idInputLabel = document.createElement("label");
     idInputLabel.setAttribute("for", "id");
     idInputLabel.setAttribute("class", "label");
@@ -29,7 +30,7 @@ const showIdDel = () => {
     const idInput = document.createElement("input");
     idInput.setAttribute("type", "number");
     idInput.setAttribute("class", "input");
-    idInput.setAttribute("name", "id");
+    idInput.setAttribute("name", "plantId");
     document.querySelector(".formContainer").appendChild(idInput);
   
     const subBut = document.createElement("button");
@@ -48,7 +49,7 @@ const showIdDel = () => {
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
-        id = form.id.value; // a problem reading value here? but it works
+        id = form.plantId.value; // a problem reading value here? but it works
         while(div.firstChild){
             div.removeChild(div.firstChild);
         }
@@ -57,7 +58,7 @@ const showIdDel = () => {
     output.setAttribute("class", "output-text")
     document.querySelector("#outputDiv").appendChild(output);
         axios
-        .delete(`${baseURLCreate}/deletePlant/${id}`)
+        .delete(`${baseURLDelete}/deletePlant/${iplantIdd}`)
         .then(
             console.log("in the delete axios function"))
         .catch(err => console.error(err))    

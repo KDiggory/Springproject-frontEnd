@@ -4,24 +4,18 @@ const buttons = document.querySelectorAll(".button");
 const baseURL = "http://localhost:8080";
 
 const readById = () => {
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
     console.log("in the readById function");
     document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to find";
     showIdRead();
 }
 
 const showIdRead = () => {
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
     const idInputLabel = document.createElement("label");
     idInputLabel.setAttribute("for", "id");
     idInputLabel.setAttribute("class", "label");
@@ -31,7 +25,7 @@ const showIdRead = () => {
     const idInput = document.createElement("input");
     idInput.setAttribute("type", "number");
     idInput.setAttribute("class", "input");
-    idInput.setAttribute("name", "id");
+    idInput.setAttribute("name", "plantId");
     document.querySelector(".formContainer").appendChild(idInput);
   
     const subBut = document.createElement("button");
@@ -52,21 +46,13 @@ const showIdRead = () => {
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
         const form = this;
-        const id = form.id.value;
-        const outputDiv = document.createElement("h2");
-        outputDiv.setAttribute("class", "output-text")
-        document.querySelector("#outputDiv").appendChild(outputDiv);
-
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);   
-}
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    document.querySelector("#doingWhat").textContent =""
+        const plantIdbyId = form.plantId.value;
+        clear();
+        
+        document.querySelector("#doingWhat").textContent =""
    
         axios
-            .get(`${baseURL}/getPlantById/${id}`)
+            .get(`${baseURL}/getPlantById/${plantIdbyId}`)
             .then( res => {
             const plant = res.data;
             const plantCol = document.createElement("div");
@@ -103,6 +89,11 @@ const showIdRead = () => {
             plantFlower.innerText = `Flower colour: ${plant.flowerColour}`;
             outputDiv.appendChild(plantFlower);
 
+            const plantId = document.createElement("p");
+            plantId.setAttribute("class", "card-text");
+            plantId.innerText = `ID: ${plant.id}`;
+            outputDiv.appendChild(plantId);
+
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
@@ -132,10 +123,15 @@ const clear = () => {
     while(div.firstChild){
         div.removeChild(div.firstChild);
     }
+    const outputDiv =   document.querySelector(".outputcontainer");
+    while(outputDiv.firstChild){
+        outputDiv.removeChild(outputDiv.firstChild);
     console.log("in the clear function");
-    document.querySelector("#doingWhat").textContent = "Clearing the history";
+    // document.querySelector("#doingWhat").textContent = "Clearing the history";
     document.querySelector(".outputcontainer").innerText = "";
 }
+}
+
 
 buttons.forEach(btn => {
     btn.addEventListener('click', event => {

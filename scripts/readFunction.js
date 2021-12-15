@@ -1,14 +1,17 @@
 "use strict";
 
+const baseURLRead = "http://localhost:8080";
+
 const read = () => {
-    const div =   document.querySelector(".formContainer");
-    while(div.firstChild){
-        div.removeChild(div.firstChild);
-    }
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
+//     const div =   document.querySelector(".formContainer");
+//     while(div.firstChild){
+//         div.removeChild(div.firstChild);
+//     }
+//     const outputDiv =   document.querySelector(".outputcontainer");
+//     while(outputDiv.firstChild){
+//         outputDiv.removeChild(outputDiv.firstChild);
+// }
     
     document.querySelector("#doingWhat").textContent = "Reading all entries";
     const output = document.createElement("h2");
@@ -16,7 +19,7 @@ const read = () => {
     document.querySelector("#outputDiv").appendChild(output);
     
 
-    axios.get(`${baseURL}/getAll`)
+    axios.get(`${baseURLRead}/getAll`)
     .then(res => {
         const plants = res.data;
         for(let i = 0; i<plants.length; i++){
