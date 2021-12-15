@@ -51,17 +51,8 @@ const showMonth = () => {
     event.preventDefault();
     const form = this;
     const month = form.month.value; // it sometimes has a problem with this?
-    const outputDiv =  document.querySelector(".outputcontainer");
+    const outputDiv = document.querySelector("#outputDiv");
     clear();
-    // while(outputDiv.firstChild){
-    //     outputDiv.removeChild(outputDiv.firstChild);
-    //     } 
-    // while(div.firstChild){
-    //      div.removeChild(div.firstChild);
-    // }
-    const output = document.createElement("h2");
-        output.setAttribute("class", "output-text")
-        document.querySelector("#outputDiv").appendChild(output);
 
     document.querySelector("#doingWhat").textContent =""
     axios
@@ -106,8 +97,7 @@ const showMonth = () => {
                             console.log(res);
                             document.querySelector(".outputcontainer").innerText = "";
                             read();
-            }        
-            );
+            });
             plantCard.appendChild(plantBody);
             plantCard.appendChild(plantDel);
             outputDiv.appendChild(plantCard); 

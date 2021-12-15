@@ -48,66 +48,56 @@ const showIdRead = () => {
         const form = this;
         const plantIdbyId = form.plantId.value;
         clear();
-        
+        const outputDiv = document.querySelector("#outputDiv");
         document.querySelector("#doingWhat").textContent =""
    
         axios
             .get(`${baseURL}/getPlantById/${plantIdbyId}`)
             .then( res => {
             const plant = res.data;
-            const plantCol = document.createElement("div");
-            plantCol.setAttribute("class", "row row-cols-2 row-cols-md-4 g-4");
-                
+            console.log(plant); 
+  
             const plantCard = document.createElement("div");
             plantCard.setAttribute("class", "card");
 
             const plantBody = document.createElement("div");
             plantBody.setAttribute("class", "card-body");
+            plantBody.setAttribute("style", "width: 18rem; ");
+            
 
             const plantTitle = document.createElement("h3");
             plantTitle.setAttribute("class", "card-title");
-            plantTitle.innerText = `${plant.name}`;
-            outputDiv.appendChild(plantTitle);
+            plantTitle.innerText = `${plant.name}\r\n`;
+            plantBody.appendChild(plantTitle);
 
-            const plantFoliage = document.createElement("p");
-            plantFoliage.setAttribute("class", "card-text");
-            plantFoliage.innerText = `Foliage colour: ${plant.foliageColour}`;
-            outputDiv.appendChild(plantFoliage);
-
-            const plantMonth = document.createElement("p");
-            plantMonth.setAttribute("class", "card-text");
-            plantMonth.innerText = `Planting month: ${plant.plantingMonth}`;
-            outputDiv.appendChild(plantMonth);
-
-            const plantPosition = document.createElement("p");
-            plantPosition.setAttribute("class", "card-text");
-            plantPosition.innerText = `Planting position: ${plant.plantingPosition}`;
-            outputDiv.appendChild(plantPosition);
-
-            const plantFlower = document.createElement("p");
-            plantFlower.setAttribute("class", "card-text");
-            plantFlower.innerText = `Flower colour: ${plant.flowerColour}`;
-            outputDiv.appendChild(plantFlower);
-
-            const plantId = document.createElement("p");
-            plantId.setAttribute("class", "card-text");
-            plantId.innerText = `ID: ${plant.id}`;
-            outputDiv.appendChild(plantId);
+            const info = document.createElement("p");
+            info.setAttribute("class", "card-text");
+            info.innerText = `\r\nFoliage colour: ${plant.foliageColour}\r\n
+            Planting month: ${plant.plantingMonth}\r\n
+            Planting position: ${plant.plantingPosition}\r\n
+            Flower colour: ${plant.flowerColour}\r\n
+            ID: ${plant.id}\r\n `;
+             plantBody.appendChild(info);
 
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
+
             plantDel.addEventListener("click", () => {
-                    axios
-                        .delete(`${baseURL}/deletePlant/${plant.id}`)
-                        .then(res => read())                   
-                        .catch(err => console.error(err))
-                        console.log(res);
-        });
-        plantBody.appendChild(plantDel);
-        plantCard.appendChild(plantBody);
-        plantCol.appendChild(plantDel);
-        outputDiv.appendChild(plantCol);
+                axios
+                    .delete(`${baseURL}/deletePlant/${plant.id}`)
+                    .then(res => read())
+                    .catch(err => console.error(err))
+                    console.log(res);
+                    document.querySelector(".outputcontainer").innerText = "";
+                    read();
+    }        
+    );
+    // plantUpdate.addEventListener("click", update());
+
+    plantCard.appendChild(plantBody);
+    plantCard.appendChild(plantDel);
+    outputDiv.appendChild(plantCard); 
 
      resBut.addEventListener("click", () => {
         showIdRead(); // instead of actually clearing, just call the show form function again
