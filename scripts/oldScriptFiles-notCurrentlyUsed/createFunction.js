@@ -1,31 +1,10 @@
 "use strict";
 
 
-// event listeners for all buttons - 
-const buttons2 = document.querySelectorAll(".button");
-
-
-const baseURLCreate = "http://localhost:8080";
-
 const create = () => {
-    clear();
-//     const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
     console.log("in the create function");
-    console.log("what do you want to create")
-    document.querySelector("#doingWhat").textContent = "Please enter the details of the plant you want to add to the database";
-    showFormCreate();
-}
-
-const showFormCreate = () => {
     clear();
-    // clear anything currently there
-// const div =   document.querySelector(".formContainer");
-// while(div.firstChild){
-//     div.removeChild(div.firstChild);
-// }
+    document.querySelector("#doingWhat").textContent = "Please enter the details of the plant you want to add to the database";
   const nameInputLabel = document.createElement("label");
   nameInputLabel.setAttribute("for", "plantName");
   nameInputLabel.setAttribute("class", "label");
@@ -90,26 +69,24 @@ const showFormCreate = () => {
   flowerInput.setAttribute("name", "flowerCol");
   document.querySelector(".formContainer").appendChild(flowerInput);
   
-// add submit and reset buttons
   const subBut = document.createElement("button");
   subBut.setAttribute("class", "formButton");
-  subBut.setAttribute("id", "submit");
+  subBut.setAttribute("type", "submit");
   subBut.innerText = "Submit";
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
   document.querySelector(".formContainer").appendChild(subBut);
 
   const resBut = document.createElement("button");
   resBut.setAttribute("class", "formButton");
-  resBut.setAttribute("id", "reset");
+  resBut.setAttribute("type", "reset");
   resBut.innerText = "Reset";
   document.querySelector(".formContainer").appendChild(resBut);
 
-  // add event listener for submit and reset button
   document.querySelector(".formContainer").addEventListener("submit", function(event) {
     event.preventDefault();
     const form = this;
     const data = {
-        name: form.plantName.value, // its unhappy with this
+        name: form.plantName.value, 
         foliageColour: form.foliageColour.value,
         plantingMonth: form.month.value,
         plantingPosition: form.position.value,
@@ -117,21 +94,17 @@ const showFormCreate = () => {
     };
     console.log(data);
     axios
-        .post(`${baseURLCreate}/createPlant/`, data)
+        .post(`${baseURL}/createPlant/`, data)
         .then(
             console.log("in the create axios function, after post"))
-        .catch(err => console.error(err))    
-        read()
-},)
- reset.addEventListener("click", () => {
-    showFormCreate(); 
-
+        .catch(err => console.error(err));   
+        clear();
+        document.querySelector("#doingWhat").textContent = "Created!";
+        
+},
+)
+document.querySelector(".formContainer").addEventListener("reset", function(event) {
+    create(); 
  })
 }
 
-buttons2.forEach(btn => {
-    btn.addEventListener('click', event => {
-        if (event.target.innerText === "create") {
-            create(); }
-    });
-});

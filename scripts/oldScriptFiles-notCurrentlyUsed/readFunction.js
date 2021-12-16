@@ -1,14 +1,12 @@
 "use strict";
 
-const baseURLRead = "http://localhost:8080";
 
 const read = () => {
     clear();
-    
     document.querySelector("#doingWhat").textContent = "Reading all entries";
     const outputDiv = document.querySelector("#outputDiv");
 
-    axios.get(`${baseURLRead}/getAll`)
+    axios.get(`${baseURL}/getAll`)
     .then(res => {
         const plants = res.data;
         for(let i = 0; i<plants.length; i++){
@@ -39,10 +37,6 @@ const read = () => {
             const plantDel = document.createElement("button");
             plantDel.setAttribute("id", "cardButton");
             plantDel.innerText = "delete";
-
-            // const plantUpdate = document.createElement("button");
-            // plantUpdate.setAttribute("id", "cardButtonUpdate");
-            // plantUpdate.innerText = "update";
 
             plantDel.addEventListener("click", () => {
                     axios

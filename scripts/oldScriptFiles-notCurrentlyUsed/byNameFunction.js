@@ -1,33 +1,10 @@
 "use strict";
 
-const buttonsName = document.querySelectorAll(".button");
 
 const readByName = () => {
     clear();
-//     const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
     console.log("in the read by name function");
     document.querySelector("#doingWhat").textContent = "Please enter the name of the plants you would like to find";
-    const output = document.createElement("h2");
-    output.setAttribute("class", "output-text")
-    document.querySelector("#outputDiv").appendChild(output);
-    showName();
-}
-
-const showName = () => {
-    clear();
-//     const div =   document.querySelector(".formContainer");
-//     while(div.firstChild){
-//         div.removeChild(div.firstChild);
-//     }
-//     const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
-
-
     const nameInputLabel = document.createElement("label");
   nameInputLabel.setAttribute("for", "plantName");
   nameInputLabel.setAttribute("class", "label");
@@ -43,14 +20,14 @@ const showName = () => {
 
   const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
-    subBut.setAttribute("id", "submit");
+    subBut.setAttribute("type", "submit");
     subBut.innerText = "Submit";
     document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
     resBut.setAttribute("class", "formButton");
-    resBut.setAttribute("id", "reset");
+    resBut.setAttribute("type", "reset");
     resBut.innerText = "Reset";
     document.querySelector(".formContainer").appendChild(resBut);
 
@@ -59,13 +36,7 @@ const showName = () => {
         const form = this;
         const plantNameByName = form.plantName.value; 
         clear();
-//         const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
-// while(div.firstChild){
-//     div.removeChild(div.firstChild);
-// }
+
 document.querySelector("#doingWhat").textContent = "";
 const outputDiv = document.querySelector("#outputDiv");;
         axios
@@ -89,7 +60,8 @@ const outputDiv = document.querySelector("#outputDiv");;
         
                     const info = document.createElement("p");
                     info.setAttribute("class", "card-text");
-                    info.innerText = `\r\nFoliage colour: ${plants.foliageColour}\r\n
+                    info.innerText = `\r\n
+                    Foliage colour: ${plants.foliageColour}\r\n
                     Planting month: ${plants.plantingMonth}\r\n
                     Planting position: ${plants.plantingPosition}\r\n
                     Flower colour: ${plants.flowerColour}\r\n
@@ -99,11 +71,7 @@ const outputDiv = document.querySelector("#outputDiv");;
                     const plantDel = document.createElement("button");
                     plantDel.setAttribute("id", "cardButton");
                     plantDel.innerText = "delete";
-        
-                    // const plantUpdate = document.createElement("button");
-                    // plantUpdate.setAttribute("id", "cardButtonUpdate");
-                    // plantUpdate.innerText = "update";
-        
+
                     plantDel.addEventListener("click", () => {
                             axios
                                 .delete(`${baseURL}/deletePlant/${plants.id}`)
@@ -114,26 +82,16 @@ const outputDiv = document.querySelector("#outputDiv");;
                                 read();
                 }        
                 );
-                // plantUpdate.addEventListener("click", update());
-        
+
                 plantCard.appendChild(plantBody);
                 plantCard.appendChild(plantDel);
                 outputDiv.appendChild(plantCard); 
     
-         resBut.addEventListener("click", () => {
-            showIdRead(); 
+                document.querySelector(".formContainer").addEventListener("reset", function(event) {
+                    readByName(); 
         })
     })
         .catch(err => console.error(err))       
     })
-    
     }
-
-buttonsName.forEach(btn => {
-    btn.addEventListener('click', event => {
-        if (event.target.innerText === "read by name") {
-        readByName();
-        } 
-    });
-});
 

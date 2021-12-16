@@ -1,27 +1,10 @@
 "use strict";
 
-const buttonsMonth = document.querySelectorAll(".button");
 
 const readByMonth = () => {
-    const outputDiv =   document.querySelector(".outputcontainer");
-    while(outputDiv.firstChild){
-        outputDiv.removeChild(outputDiv.firstChild);
-}
+    clear();
     console.log("in the read by planting month function");
     document.querySelector("#doingWhat").textContent = "Please enter the planting month of the plants you would like to find";
-    showMonth();
-}
-
-const showMonth = () => {
-    clear();
-//     const div =   document.querySelector(".formContainer");
-//     while(div.firstChild){
-//         div.removeChild(div.firstChild);
-//     }
-//     const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
     const monthInputLabel = document.createElement("label");
   monthInputLabel.setAttribute("for", "month");
   monthInputLabel.setAttribute("class", "label");
@@ -36,14 +19,14 @@ const showMonth = () => {
   
   const subBut = document.createElement("button");
   subBut.setAttribute("class", "formButton");
-  subBut.setAttribute("id", "submit");
+  subBut.setAttribute("type", "submit");
   subBut.innerText = "Submit";
   document.querySelector(".formContainer").appendChild(document.createElement("br"));
   document.querySelector(".formContainer").appendChild(subBut);
 
   const resBut = document.createElement("button");
   resBut.setAttribute("class", "formButton");
-  resBut.setAttribute("id", "reset");
+  resBut.setAttribute("type", "reset");
   resBut.innerText = "Reset";
   document.querySelector(".formContainer").appendChild(resBut);
 
@@ -78,7 +61,8 @@ const showMonth = () => {
     
                 const info = document.createElement("p");
                 info.setAttribute("class", "card-text");
-                info.innerText = `\r\nFoliage colour: ${plants[i].foliageColour}\r\n
+                info.innerText = `\r\n
+                Foliage colour: ${plants[i].foliageColour}\r\n
                 Planting month: ${plants[i].plantingMonth}\r\n
                 Planting position: ${plants[i].plantingPosition}\r\n
                 Flower colour: ${plants[i].flowerColour}\r\n
@@ -103,18 +87,10 @@ const showMonth = () => {
             outputDiv.appendChild(plantCard); 
     }
 
-     resBut.addEventListener("click", () => {
-        showIdRead(); 
+    document.querySelector(".formContainer").addEventListener("reset", function(event) {
+        readByMonth(); 
      })
 })
     .catch(err => console.error(err))       
 })
-
 }
-buttonsMonth.forEach(btn => {
-    btn.addEventListener('click', event => {
-        if (event.target.innerText === "read by planting month") {
-            readByMonth();
-        }
-    });
-});

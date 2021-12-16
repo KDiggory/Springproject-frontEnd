@@ -1,29 +1,26 @@
 body {
-	background: linear-gradient(270deg, #828f7d, #b3b47e, #5c9c74);
-	background-size: 600% 600%;
-	-webkit-animation: Gradient 30s ease infinite;
-	-moz-animation: Gradient 30s ease infinite;
-	animation: Gradient 30s ease infinite;
+    background: linear-gradient(270deg, #246655, #b3b47e, #5c9c74, #828f7d);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
 }
+
 @-webkit-keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 @-moz-keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
-}
-@-o-keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 @keyframes AnimationName {
-    0%{background-position:50% 0%}
-    50%{background-position:51% 100%}
-    100%{background-position:50% 0%}
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 #plants {
@@ -53,6 +50,7 @@ body {
 .button {
     border-radius: 15px;
     height: 25%;
+    background-color: rgba(191, 219, 188, 0.842);
 }
 
 
@@ -88,7 +86,7 @@ body {
     margin-left: auto;  
     margin-top: 9px;  
     border: 2px; 
-    border-top: 4mm ridge rgba(22, 112, 10, 0.979);
+    border-top: 4mm ridge #277043;
     opacity: 100% ;
     }
 
@@ -125,6 +123,7 @@ body {
     border-radius: 15px;
     height: 25%;
     width:100%;
+    background-color: rgba(191, 219, 188, 0.842);
 }
 
 .card-body {

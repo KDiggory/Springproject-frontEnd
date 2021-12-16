@@ -5,17 +5,8 @@ const baseURL = "http://localhost:8080";
 
 const readById = () => {
     clear();
-//     const outputDiv =   document.querySelector(".outputcontainer");
-//     while(outputDiv.firstChild){
-//         outputDiv.removeChild(outputDiv.firstChild);
-// }
     console.log("in the readById function");
     document.querySelector("#doingWhat").textContent = "Please enter the id of the plant you would like to find";
-    showIdRead();
-}
-
-const showIdRead = () => {
-    clear();
     const idInputLabel = document.createElement("label");
     idInputLabel.setAttribute("for", "id");
     idInputLabel.setAttribute("class", "label");
@@ -30,18 +21,16 @@ const showIdRead = () => {
   
     const subBut = document.createElement("button");
     subBut.setAttribute("class", "formButton");
-    subBut.setAttribute("id", "submit");
+    subBut.setAttribute("type", "submit");
     subBut.innerText = "Submit";
     document.querySelector(".formContainer").appendChild(document.createElement("br"));
     document.querySelector(".formContainer").appendChild(subBut);
   
     const resBut = document.createElement("button");
     resBut.setAttribute("class", "formButton");
-    resBut.setAttribute("id", "reset");
+    resBut.setAttribute("type", "reset");
     resBut.innerText = "Reset";
     document.querySelector(".formContainer").appendChild(resBut); 
-    
-    // need event listeners for each button
 
     document.querySelector(".formContainer").addEventListener("submit", function(event) {
         event.preventDefault();
@@ -72,7 +61,8 @@ const showIdRead = () => {
 
             const info = document.createElement("p");
             info.setAttribute("class", "card-text");
-            info.innerText = `\r\nFoliage colour: ${plant.foliageColour}\r\n
+            info.innerText = `\r\n
+            Foliage colour: ${plant.foliageColour}\r\n
             Planting month: ${plant.plantingMonth}\r\n
             Planting position: ${plant.plantingPosition}\r\n
             Flower colour: ${plant.flowerColour}\r\n
@@ -93,14 +83,12 @@ const showIdRead = () => {
                     read();
     }        
     );
-    // plantUpdate.addEventListener("click", update());
-
     plantCard.appendChild(plantBody);
     plantCard.appendChild(plantDel);
     outputDiv.appendChild(plantCard); 
 
-     resBut.addEventListener("click", () => {
-        showIdRead(); // instead of actually clearing, just call the show form function again
+    document.querySelector(".formContainer").addEventListener("reset", function(event) {
+        readById();  
      })
 })
     .catch(err => console.error(err))       
@@ -109,6 +97,10 @@ const showIdRead = () => {
 }
 
 const clear = () => {
+    const doing =  document.querySelector("#doingWhat");
+    while(doing.firstChild){
+        doing.removeChild(doing.firstChild);
+    }
     const div =   document.querySelector(".formContainer");
     while(div.firstChild){
         div.removeChild(div.firstChild);
@@ -117,20 +109,28 @@ const clear = () => {
     while(outputDiv.firstChild){
         outputDiv.removeChild(outputDiv.firstChild);
     console.log("in the clear function");
-    // document.querySelector("#doingWhat").textContent = "Clearing the history";
-    document.querySelector(".outputcontainer").innerText = "";
 }
-}
+    }
 
 
 buttons.forEach(btn => {
     btn.addEventListener('click', event => {
-        if (event.target.innerText === "read by id") {
-            readById();
-        } else if (event.target.innerText === "reset this page") {
-            clear();
-        } else if (event.target.innerText === "read" ) {
+        if (event.target.innerText === "create") {
+            create();
+        } else if (event.target.innerText === "read") {
             read();
+        } else if (event.target.innerText === "read by id" ) {
+            readById();
+        } else if (event.target.innerText === "read by name" ) {
+            readByName();
+        }else if (event.target.innerText === "read by planting month" ) {
+            readByMonth();
+        }else if (event.target.innerText === "update" ) {
+            update();
+        }else if (event.target.innerText === "delete" ) {
+            deleteById();
+        }else if (event.target.innerText === "reset this page" ) {
+            clear();
         }
     });
 });
