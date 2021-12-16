@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Plant List</title>
+    <!-- axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Google font  -->
+    <link href='https://fonts.googleapis.com/css?family=Almendra Display' rel='stylesheet'>
+    <link rel="stylesheet" href="styles/project2.CSS">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="leafContainer">
+    <img id="plants" src="images/botanical.png" alt="The outline of a stylised leaf">
+    <img id="plantsL" src="images/flowersFlip.png" alt="The outline of a stylised flower stalk">
+    <img id="plants" src="images/poppy.png" alt="The outline of a stylised poppy seed head">
+    <img id="plantsS" src="images/flowerPoppyFlip.png" alt="The outline of a stylised poppy seed head">
+    <img id="plants" src="images/lavendar.png" alt="The outline of a stylised poppy seed head">
+    <h1 id="welcome">Katie's Plant List</h1>
+    <img id="plants" src="images/lavendarFlip.png" alt="The outline of a stylised poppy seed head">
+    <img id="plantsS" src="images/flowerPoppy.png" alt="The outline of a stylised poppy seed head">
+    <img id="plants" src="images/poppy.png" alt="The outline of a stylised poppy seed head">
+    <img id="plantsL" src="images/flowers.png" alt="The outline of a stylised flower stalk">
+    <img id="plants" src="images/botanicalFlip.png" alt="The outline of a stylised leaf">
+</div>
+
+
+    <h2 id="whatToDo">What would you like to do?</h2>
+    <div id="buttons" class="buttoncontainer">
+        <button class="button" id="create">create</button>
+        <button class="button" id="read">read</button>
+        <button class="button" id="readById">read by id</button>
+        <button class="button" id="byName">read by name</button>
+        <button class="button" id="byMonth">read by planting month</button>
+        <button class="button" id="update">update</button>
+        <button class="button" id="delete">delete</button>
+        <button class="button" id="clear">reset this page</button>
+        
+    </div>
+    <div> 
+        <hr id="line">
+    </div>
+   
+    <div id="theform">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="formContainer"></form>
+  
+            </div>
+       
+    </div>
+    <div id="whatDoing" class="col-sm">
+        <h2 id="doingWhat" ></h2>
+    </div>
+</div>
+    <div id="outputDiv" class="outputcontainer row row-cols-5 row-cols-md-12 g-4">
+   
+</div>
+        
+</div>
+<script src="scripts/AllFunctionsRefactored.js"></script>
+
+</body>
+
+</html>

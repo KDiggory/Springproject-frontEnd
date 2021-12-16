@@ -1,0 +1,176 @@
+/* * {
+    box-sizing: border-box;
+  } */
+
+  /* .outputcontainer {
+    width: 75%;
+    float: left;
+  } */
+
+
+
+  /* .outputDiv {
+    width: 75%;
+    float: right;
+  } */
+
+  h2 {
+    color: black;
+    -webkit-text-stroke: 1px black;
+    font-family: 'Almendra Display';
+    font-size:200%;
+    /* display: flex;
+    justify-content: flex-end; */
+    
+}
+
+#whatToDo {
+  color: black;
+  -webkit-text-stroke: 1px black;
+  font-family: 'Almendra Display';
+  font-size:200%;
+  display: flex;
+  justify-content: center;
+}
+
+
+#plants {
+    height: 3.5%;
+    width: 3.5%;
+  }
+  #plantsL {
+    height: 2.9%;
+    width: 2.9%;
+  }
+
+  #plantsS {
+    height:3.9%;
+    width: 3.9%;
+  }
+
+  .leafContainer {
+    display: flex;
+    vertical-align: middle;
+    justify-content: space-between;
+    margin-bottom: -1%;
+    
+  }
+  h1 {
+    color: black;
+    -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    font-size:300%;
+    display: flex;
+    justify-content: space-around;
+}
+.card {
+  border-style: solid;
+  border-radius: 4;
+  border-color: black;
+  font-family: 'Almendra Display';
+  font-size:150%;
+  
+}
+
+/* h2 {
+  color: black;
+  -webkit-text-stroke: 1.8px black;
+  font-family: 'Almendra Display';
+  font-size:150%;
+  
+}
+p {
+  color: black;
+  -webkit-text-stroke: 1.5px black;
+  font-family: 'Almendra Display';
+  font-size:100%;
+} */
+
+
+
+
+.button {
+    color: black;
+    -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    font-size:200%;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15px;
+}
+
+  input {
+    font-size:16px;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    /* this does nothing to the text, only size seems to work? */
+    font-weight: lighter; 
+    width:65%;
+    padding: 15px 10px;
+    line-height: 15px;
+}
+
+
+#theform {
+    color: black;
+    -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    font-size:150%;
+    width: 150%;  
+    float: left;
+  margin-top: 0%; 
+}
+
+.formButton{ 
+  font-size:120%;
+    width: 65%; 
+    display: flex;
+    justify-content: space-evenly; 
+    border-radius: 15px;
+}
+
+.label {
+  margin-left: 1ex;
+}
+
+
+body {
+	background: linear-gradient(270deg, #828f7d, #b3b47e, #5c9c74);
+	background-size: 600% 600%;
+	-webkit-animation: Gradient 30s ease infinite;
+	-moz-animation: Gradient 30s ease infinite;
+	animation: Gradient 30s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+
+.buttoncontainer {
+  display: flex;
+    vertical-align: top;
+    justify-content: center;
+    margin-bottom: 0%;
+    border-radius: 15px;
+}
+
+.outputcontainer {
+ /* want to get this into the space in the webpage, how?? */
+
+}

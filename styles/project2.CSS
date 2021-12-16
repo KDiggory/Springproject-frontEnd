@@ -1,0 +1,215 @@
+body {
+    background: linear-gradient(270deg, #246655, #b3b47e, #5c9c74, #828f7d);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 30s ease infinite;
+    -moz-animation: AnimationName 30s ease infinite;
+    animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+#plants {
+    height: 3.5%;
+    width: 3.5%;
+  }
+#plantsL {
+    height: 2.9%;
+    width: 2.9%;
+  }
+
+#plantsS {
+    height:3.9%;
+    width: 3.9%;
+  }
+
+.leafContainer {
+    display: flex;
+    vertical-align: middle;
+    justify-content: space-between;
+    margin-bottom: -1%;
+    align-items: center;
+  }
+
+
+
+.button {
+    border-radius: 15px;
+    height: 25%;
+    background-color: rgba(191, 219, 188, 0.842);
+}
+
+
+.buttoncontainer {
+    display: flex;
+      vertical-align: top;
+      justify-content: center;
+      margin-bottom: 0%;
+      border-radius: 15px;
+      color: black;
+     -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    font-size:200%;
+  }
+
+#whatToDo {
+    display: flex;
+    vertical-align: top;
+    justify-content: center;
+    margin-bottom: 1%;
+    color: black;
+   -webkit-text-stroke: 1.5px black;
+  font-family: 'Almendra Display';
+  font-size:240%;
+  }
+ 
+#line {
+    width: 90%;  
+    height: 2px;  
+    background-color: solid  rgb(0, 0, 0);  
+    margin-bottom: 7px;  
+    margin-right: auto;  
+    margin-left: auto;  
+    margin-top: 9px;  
+    border: 2px; 
+    border-top: 4mm ridge #277043;
+    opacity: 100% ;
+    }
+
+#whatDoing {
+    display: flex;
+    justify-content: flex-start;
+    color: black;
+     -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    font-size:200%;
+    margin-left: 5% ;
+    }
+
+ #theform {
+    display: flex;
+    justify-content: flex-start;
+    color: black;
+     -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    font-size:150%;
+    margin-left: 2%;
+    }
+
+.label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -12%;
+    margin-top: 0%;
+}
+.formButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    height: 25%;
+    width:100%;
+    background-color: rgba(191, 219, 188, 0.842);
+}
+
+.card-body {
+    color: black;
+     -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    width: 20%;
+    border-radius: 15px;
+    margin-left: 2%;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-text{
+    color: black;
+     -webkit-text-stroke: 1.5px black;
+    font-family: 'Almendra Display';
+    margin-left: 2%;
+    font-size:100%;
+}
+.card-title{
+    color: black;
+     -webkit-text-stroke: 2.3px black;
+    font-family: 'Almendra Display';
+    text-justify: center;
+    margin-left: 2%;
+    margin-top: 1%;
+    font-size:100%;
+}
+
+#cardButton{
+    color: black;
+     -webkit-text-stroke: 2.3px black;
+    font-family: 'Almendra Display';
+    text-justify: center;
+    margin-bottom: 4%;
+    border-radius: 15px;
+    background-color: red;
+    width: 100%;
+    font-size:100%;
+}
+
+.inupt {
+    border-radius: 15px;
+   
+} 
+.card-title {
+    font-size:170%;
+    text-align: center;
+}
+.card-text {
+    font-size:120%;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+#cardButton {
+    font-size:150%;
+}
+
+.card {
+    margin-left: 2%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 0px 20px 0 rgba(181, 228, 11, 0.2);
+    background-color: rgba(191, 219, 188, 0.842);
+    display: flex;
+    flex-direction: column;  
+    border-radius: 15%;
+    border-color: black;
+    border-width: 5px;
+    max-width: 100%;
+ }
+
+ .card-body {
+    display: flex;
+    flex-direction: column; 
+ }
+ h2 {
+    font-size:80%;
+}
+
+ h1 {
+    color: black;
+   -webkit-text-stroke: 1.8px black;
+  font-family: 'Almendra Display';
+  font-size:300%;
+  }
+
+ 
